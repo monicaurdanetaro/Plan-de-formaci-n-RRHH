@@ -18,39 +18,33 @@
 }
 html { scroll-behavior: smooth; }
 body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--text); min-height: 100vh; }
-
-/* TOAST */
 #edit-toast { position: fixed; bottom: 24px; right: 24px; z-index: 999; background: var(--navy); color: white; font-size: 12px; padding: 10px 18px; border-radius: 30px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 20px rgba(4,44,83,0.25); opacity: 0; transform: translateY(8px); transition: opacity 0.3s, transform 0.3s; pointer-events: none; }
 #edit-toast.show { opacity: 1; transform: translateY(0); }
 #edit-toast .dot { width: 7px; height: 7px; border-radius: 50%; background: #4CAF50; flex-shrink: 0; }
 [contenteditable="true"] { outline: none; border-radius: 4px; transition: background 0.15s; cursor: text; }
 [contenteditable="true"]:hover { background: rgba(55,138,221,0.08) !important; }
 [contenteditable="true"]:focus { background: rgba(55,138,221,0.13) !important; box-shadow: 0 0 0 2px rgba(55,138,221,0.35); }
-.provider-field { display: flex; align-items: center; gap: 6px; margin-top: 7px; padding: 5px 9px; border-radius: 7px; border: 1.5px dashed rgba(55,138,221,0.35); background: rgba(230,241,251,0.4); min-height: 28px; }
+.provider-field { display: flex; align-items: center; gap: 6px; margin-top: 6px; padding: 5px 9px; border-radius: 7px; border: 1.5px dashed rgba(55,138,221,0.35); background: rgba(230,241,251,0.4); min-height: 28px; }
 .provider-field .prov-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--blue); white-space: nowrap; flex-shrink: 0; }
 .provider-field .prov-value { font-size: 11.5px; color: var(--gray-600); flex: 1; }
 .provider-field .prov-value:empty::before { content: "Por definir — haz clic para editar"; color: #AABBD0; font-style: italic; }
-.provider-field:focus-within { border-color: var(--mid); background: rgba(230,241,251,0.7); }
-
-/* TOOLBAR */
+.provider-field:focus-within { border-color: var(--mid); }
 .edit-toolbar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 1px solid var(--border); padding: 10px 2rem; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .toolbar-left { display: flex; align-items: center; gap: 10px; }
 .toolbar-left span { font-size: 12px; color: var(--gray-600); }
 .toolbar-badge { font-size: 10.5px; padding: 3px 10px; border-radius: 12px; background: var(--pale); color: var(--accent); font-weight: 500; }
-.btn-edit { font-family: "DM Sans", sans-serif; font-size: 12px; font-weight: 500; padding: 7px 16px; border-radius: 8px; cursor: pointer; border: 1.5px solid var(--blue); background: white; color: var(--blue); display: flex; align-items: center; gap: 6px; transition: background 0.15s; }
+.btn-edit { font-family: "DM Sans", sans-serif; font-size: 12px; font-weight: 500; padding: 7px 16px; border-radius: 8px; cursor: pointer; border: 1.5px solid var(--blue); background: white; color: var(--blue); display: flex; align-items: center; gap: 6px; }
 .btn-edit:hover { background: var(--pale); }
 .btn-edit.active { background: var(--blue); color: white; }
 .btn-save { font-family: "DM Sans", sans-serif; font-size: 12px; font-weight: 500; padding: 7px 16px; border-radius: 8px; cursor: pointer; border: 1.5px solid var(--green); background: var(--green-pale); color: var(--green); display: flex; align-items: center; gap: 6px; }
 .btn-save:hover { background: #C8E6C9; }
 .btn-group { display: flex; gap: 8px; }
-
-/* HERO */
 .hero { background: var(--navy); padding: 3rem 4rem 0; position: relative; overflow: hidden; }
 .hero::before { content: ""; position: absolute; top: -80px; right: -80px; width: 400px; height: 400px; border-radius: 50%; border: 60px solid rgba(55,138,221,0.07); }
 .hero::after { content: ""; position: absolute; bottom: -40px; left: 30%; width: 250px; height: 250px; border-radius: 50%; border: 40px solid rgba(55,138,221,0.05); }
 .hero-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem; position: relative; z-index: 1; }
 .brand { display: flex; align-items: center; gap: 16px; }
-.brand-logo { width: 52px; height: 52px; background: transparent; border: none; border-radius: 0; display: flex; align-items: center; justify-content: center; }
+.brand-logo { width: 52px; height: 52px; background: transparent; border: none; display: flex; align-items: center; justify-content: center; }
 .brand-text h1 { font-family: "Montserrat", sans-serif; font-size: 22px; font-weight: 800; color: white; line-height: 1.2; letter-spacing: -0.3px; }
 .brand-text p { font-family: "Montserrat", sans-serif; font-size: 14px; font-weight: 600; color: var(--light); margin-top: 4px; }
 .hero-badge { background: rgba(55,138,221,0.18); border: 1px solid rgba(55,138,221,0.3); color: var(--light); font-size: 12px; padding: 7px 16px; border-radius: 20px; align-self: center; }
@@ -59,17 +53,13 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
 .kpi-item:last-child { border-right: none; }
 .kpi-item:not(:first-child) { padding-left: 1.5rem; }
 .kpi-num { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 40px; color: white; line-height: 1; }
-.kpi-num span { font-size: 18px; opacity: 0.55; }
 .kpi-label { font-size: 10.5px; color: rgba(255,255,255,0.4); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.08em; }
-
-/* MAIN */
 .main { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
-.section-label { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; }
+.section-label { display: flex; align-items: center; gap: 12px; margin-bottom: 1.25rem; }
 .section-label::before { content: ""; display: block; width: 4px; height: 20px; background: var(--blue); border-radius: 2px; }
 .section-label h2 { font-size: 12.5px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); }
-
-/* SUMMARY TABLE */
-.summary-section { margin-bottom: 2.5rem; }
+/* SUMMARY */
+.summary-section { margin-bottom: 2rem; }
 .summary-table { background: white; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; }
 .sum-header { display: grid; grid-template-columns: 200px 1fr; background: var(--navy); }
 .sum-header-cell { padding: 11px 18px; font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: rgba(255,255,255,0.65); }
@@ -81,74 +71,19 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
 .sum-track-name { font-size: 12px; font-weight: 600; line-height: 1.3; }
 .sum-modules { display: flex; flex-wrap: wrap; gap: 6px; padding: 11px 16px; }
 .sum-pill { font-size: 11px; padding: 4px 10px; border-radius: 20px; border: 1px solid transparent; }
-.s-blue .sum-track { background: var(--pale); }
-.s-blue .sum-track-name { color: var(--navy); }
-.s-blue .sum-pill { background: var(--pale); color: var(--accent); border-color: rgba(24,95,165,0.15); }
-.s-purple .sum-track { background: var(--purple-pale); }
-.s-purple .sum-track-name { color: #4A1A7A; }
-.s-purple .sum-pill { background: var(--purple-pale); color: var(--purple); border-color: rgba(123,61,181,0.15); }
-.s-green .sum-track { background: var(--green-pale); }
-.s-green .sum-track-name { color: #1B5E20; }
-.s-green .sum-pill { background: var(--green-pale); color: var(--green); border-color: rgba(46,125,50,0.15); }
-.s-orange .sum-track { background: var(--orange-pale); }
-.s-orange .sum-track-name { color: #7C2A00; }
-.s-orange .sum-pill { background: var(--orange-pale); color: var(--orange); border-color: rgba(194,92,26,0.15); }
-.s-navy .sum-track { background: #EDF2F8; }
-.s-navy .sum-track-name { color: var(--navy); }
-.s-navy .sum-pill { background: var(--pale); color: var(--navy); border-color: rgba(4,44,83,0.15); }
-
-/* TRACKS */
-.tracks-grid { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 3rem; }
-.track-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
-.track-head { padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 14px; }
-.track-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-.track-head-text h3 { font-size: 15px; font-weight: 600; line-height: 1.2; }
-.track-head-text p { font-size: 11.5px; margin-top: 2px; opacity: 0.65; }
-.track-modules { padding: 0 1.5rem 1.25rem; display: grid; grid-template-columns: repeat(3,1fr); gap: 0 1.5rem; }
-.module-row { display: flex; gap: 12px; align-items: stretch; padding: 12px 0; border-top: 1px solid var(--border); min-width: 0; }
-.module-num { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; flex-shrink: 0; align-self: flex-start; margin-top: 2px; }
-.module-body { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-.module-name { font-size: 13px; font-weight: 500; line-height: 1.35; color: var(--text); }
-.module-desc { font-size: 12px; color: var(--gray-600); margin-top: 4px; line-height: 1.55; flex-grow: 1; }
-.module-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
-.chip { font-size: 10.5px; padding: 3px 9px; border-radius: 20px; font-weight: 400; border: 1px solid transparent; }
-.chip-aud { background: var(--gray-100); color: var(--gray-800); border-color: var(--gray-200); }
-.chip-fmt { background: white; color: var(--gray-600); border-color: var(--gray-200); }
-
-.t-blue .track-head { background: var(--pale); }
-.t-blue .track-head-text h3 { color: var(--navy); }
-.t-blue .track-head-text p { color: var(--blue); }
-.t-blue .track-icon { background: var(--blue); color: white; }
-.t-blue .module-num { background: var(--pale); color: var(--accent); }
-.t-purple .track-head { background: var(--purple-pale); }
-.t-purple .track-head-text h3 { color: #4A1A7A; }
-.t-purple .track-head-text p { color: var(--purple); }
-.t-purple .track-icon { background: var(--purple); color: white; }
-.t-purple .module-num { background: var(--purple-pale); color: var(--purple); }
-.t-purple .provider-field { border-color: rgba(123,61,181,0.3); }
-.t-purple .prov-label { color: var(--purple); }
-.t-green .track-head { background: var(--green-pale); }
-.t-green .track-head-text h3 { color: #1B5E20; }
-.t-green .track-head-text p { color: var(--green); }
-.t-green .track-icon { background: var(--green); color: white; }
-.t-green .module-num { background: var(--green-pale); color: var(--green); }
-.t-green .provider-field { border-color: rgba(46,125,50,0.3); }
-.t-green .prov-label { color: var(--green); }
-.t-orange .track-head { background: var(--orange-pale); }
-.t-orange .track-head-text h3 { color: #7C2A00; }
-.t-orange .track-head-text p { color: var(--orange); }
-.t-orange .track-icon { background: var(--orange); color: white; }
-.t-orange .module-num { background: var(--orange-pale); color: var(--orange); }
-.t-orange .provider-field { border-color: rgba(194,92,26,0.3); }
-.t-orange .prov-label { color: var(--orange); }
-.t-navy .track-head { background: #EDF2F8; }
-.t-navy .track-head-text h3 { color: var(--navy); }
-.t-navy .track-head-text p { color: var(--blue); }
-.t-navy .track-icon { background: var(--navy); color: white; }
-.t-navy .module-num { background: var(--pale); color: var(--navy); }
-
+.s-blue .sum-track { background: var(--pale); } .s-blue .sum-track-name { color: var(--navy); } .s-blue .sum-pill { background: var(--pale); color: var(--accent); border-color: rgba(24,95,165,0.15); }
+.s-purple .sum-track { background: var(--purple-pale); } .s-purple .sum-track-name { color: #4A1A7A; } .s-purple .sum-pill { background: var(--purple-pale); color: var(--purple); border-color: rgba(123,61,181,0.15); }
+.s-green .sum-track { background: var(--green-pale); } .s-green .sum-track-name { color: #1B5E20; } .s-green .sum-pill { background: var(--green-pale); color: var(--green); border-color: rgba(46,125,50,0.15); }
+.s-orange .sum-track { background: var(--orange-pale); } .s-orange .sum-track-name { color: #7C2A00; } .s-orange .sum-pill { background: var(--orange-pale); color: var(--orange); border-color: rgba(194,92,26,0.15); }
+.s-navy .sum-track { background: #EDF2F8; } .s-navy .sum-track-name { color: var(--navy); } .s-navy .sum-pill { background: var(--pale); color: var(--navy); border-color: rgba(4,44,83,0.15); }
+/* INITIATIVES BANNER */
+.initiatives-banner { background: white; border-radius: 16px; border: 1px solid var(--border); padding: 1.1rem 1.5rem; margin-bottom: 2rem; display: flex; align-items: flex-start; gap: 14px; }
+.init-icon { width: 36px; height: 36px; border-radius: 9px; background: #FFFBEB; border: 1px solid rgba(194,92,26,0.2); display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+.init-body h4 { font-size: 12.5px; font-weight: 600; color: var(--navy); margin-bottom: 7px; }
+.init-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.init-pill { font-size: 11.5px; padding: 5px 12px; border-radius: 20px; background: #FFFBEB; color: #7C2A00; border: 1px solid rgba(194,92,26,0.2); }
 /* TIMELINE */
-.timeline { margin-bottom: 3rem; }
+.timeline { margin-bottom: 2.5rem; }
 .tl-wrap { position: relative; padding: 2rem 0 1rem; }
 .tl-spine { position: absolute; top: 52px; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--navy), var(--mid)); border-radius: 2px; z-index: 0; }
 .tl-months { display: grid; grid-template-columns: repeat(5,1fr); position: relative; z-index: 1; }
@@ -163,30 +98,54 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
 .tl-dat { background: var(--green-pale);  color: var(--green);  }
 .tl-lid { background: var(--orange-pale); color: var(--orange); }
 .tl-est { background: #EDF2F8;            color: var(--navy);   }
-
+.tl-ini { background: #FFFBEB; color: #7C2A00; border: 1px dashed rgba(194,92,26,0.35); }
+/* TRACKS */
+.tracks-grid { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2.5rem; }
+.track-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
+.track-head { padding: 1.1rem 1.5rem; display: flex; align-items: center; gap: 14px; }
+.track-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.track-head-text h3 { font-size: 15px; font-weight: 600; line-height: 1.2; }
+.track-modules { padding: 0 1.5rem 1.25rem; display: grid; grid-template-columns: repeat(3,1fr); gap: 0 1.5rem; }
+.track-modules-2 { grid-template-columns: repeat(2,1fr) !important; }
+.module-row { display: flex; gap: 12px; align-items: stretch; padding: 12px 0; border-top: 1px solid var(--border); min-width: 0; }
+.module-num { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; flex-shrink: 0; align-self: flex-start; margin-top: 2px; }
+.module-body { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.module-name { font-size: 13px; font-weight: 500; line-height: 1.35; color: var(--text); }
+.module-desc { font-size: 12px; color: var(--gray-600); margin-top: 4px; line-height: 1.55; flex-grow: 1; }
+.module-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
+.chip { font-size: 10.5px; padding: 3px 9px; border-radius: 20px; font-weight: 400; border: 1px solid transparent; }
+.chip-aud { background: var(--gray-100); color: var(--gray-800); border-color: var(--gray-200); }
+.chip-fmt { background: white; color: var(--gray-600); border-color: var(--gray-200); }
+.chip-mes { background: var(--navy); color: white; font-weight: 500; }
+.chip-cupos { background: white; color: var(--blue); border-color: rgba(24,95,165,0.3); font-weight: 500; min-width: 70px; }
+.t-blue .track-head { background: var(--pale); } .t-blue .track-head-text h3 { color: var(--navy); } .t-blue .track-icon { background: var(--blue); color: white; } .t-blue .module-num { background: var(--pale); color: var(--accent); }
+.t-purple .track-head { background: var(--purple-pale); } .t-purple .track-head-text h3 { color: #4A1A7A; } .t-purple .track-icon { background: var(--purple); color: white; } .t-purple .module-num { background: var(--purple-pale); color: var(--purple); } .t-purple .provider-field { border-color: rgba(123,61,181,0.3); } .t-purple .prov-label { color: var(--purple); }
+.t-green .track-head { background: var(--green-pale); } .t-green .track-head-text h3 { color: #1B5E20; } .t-green .track-icon { background: var(--green); color: white; } .t-green .module-num { background: var(--green-pale); color: var(--green); } .t-green .provider-field { border-color: rgba(46,125,50,0.3); } .t-green .prov-label { color: var(--green); }
+.t-orange .track-head { background: var(--orange-pale); } .t-orange .track-head-text h3 { color: #7C2A00; } .t-orange .track-icon { background: var(--orange); color: white; } .t-orange .module-num { background: var(--orange-pale); color: var(--orange); } .t-orange .provider-field { border-color: rgba(194,92,26,0.3); } .t-orange .prov-label { color: var(--orange); }
+.t-navy .track-head { background: #EDF2F8; } .t-navy .track-head-text h3 { color: var(--navy); } .t-navy .track-icon { background: var(--navy); color: white; } .t-navy .module-num { background: var(--pale); color: var(--navy); }
+/* INITIATIVES DETAIL */
+.initiatives-detail { background: white; border-radius: 16px; border: 2px dashed var(--border); overflow: hidden; margin-bottom: 2.5rem; }
+.initiatives-detail .track-head { background: #FFFBEB; }
+.initiatives-detail .track-head-text h3 { color: #7C2A00; }
+.initiatives-detail .track-icon { background: #C25C1A; color: white; }
 /* FOOTER */
 .footer { background: var(--navy); padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
 .footer p { font-size: 11px; color: rgba(255,255,255,0.35); }
 .footer-chips { display: flex; gap: 8px; flex-wrap: wrap; }
 .f-chip { font-size: 10.5px; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.55); }
-
 @media (max-width: 900px) {
   .hero { padding: 2rem 1.5rem 0; }
   .hero-kpis { margin: 0 -1.5rem; padding: 0 1.5rem; }
-  .track-modules { grid-template-columns: 1fr; }
+  .track-modules, .track-modules-2 { grid-template-columns: 1fr !important; }
   .tl-months { grid-template-columns: repeat(3,1fr); gap: 1rem; }
   .tl-spine { display: none; }
   .footer { padding: 1.5rem; }
 }
-@media (max-width: 600px) {
-  .tl-months { grid-template-columns: repeat(2,1fr); }
-}
+@media (max-width: 600px) { .tl-months { grid-template-columns: repeat(2,1fr); } }
 </style>
 </head>
 <body>
-
 <div id="edit-toast"><div class="dot"></div><span id="toast-msg">Modo edición activo</span></div>
-
 <div class="edit-toolbar">
   <div class="toolbar-left">
     <span>Ruta de Formación RRHH 2026</span>
@@ -197,7 +156,6 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
     <button class="btn-save" onclick="exportHTML()">⬇️ Descargar HTML</button>
   </div>
 </div>
-
 <div class="hero">
   <div class="hero-top">
     <div class="brand">
@@ -212,10 +170,9 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
   <div class="hero-kpis">
     <div class="kpi-item"><div class="kpi-num">5</div><div class="kpi-label">Rutas de formación</div></div>
     <div class="kpi-item"><div class="kpi-num">5</div><div class="kpi-label">Meses de programa</div></div>
-    <div class="kpi-item"><div class="kpi-num">15</div><div class="kpi-label">Formaciones</div></div>
+    <div class="kpi-item"><div class="kpi-num">13</div><div class="kpi-label">Formaciones</div></div>
   </div>
 </div>
-
 <div class="main">
 
   <!-- SUMMARY -->
@@ -232,14 +189,14 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
           <span class="sum-pill">Herramientas IA aplicadas a RRHH</span>
           <span class="sum-pill">Prompting</span>
           <span class="sum-pill">Optimizando la gerencia con IA</span>
-          <span class="sum-pill">Hackathon IA de cierre</span>
         </div>
       </div>
       <div class="summary-row s-purple">
         <div class="sum-track"><div class="sum-icon">💬</div><div class="sum-track-name">Comunicación e Influencia</div></div>
         <div class="sum-modules">
           <span class="sum-pill">Gestión del tiempo</span>
-          <span class="sum-pill">Presentaciones efectivas y herramientas de apoyo</span>
+          <span class="sum-pill">Presentaciones efectivas</span>
+          <span class="sum-pill">Oratoria de alto impacto</span>
         </div>
       </div>
       <div class="summary-row s-green">
@@ -254,205 +211,27 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
         <div class="sum-modules">
           <span class="sum-pill">Motivación y liderazgo personal</span>
           <span class="sum-pill">Reskilling y desarrollo del talento</span>
-          <span class="sum-pill">Oratoria de alto impacto</span>
         </div>
       </div>
       <div class="summary-row s-navy">
         <div class="sum-track"><div class="sum-icon">🏛️</div><div class="sum-track-name">RRHH Estratégico</div></div>
         <div class="sum-modules">
           <span class="sum-pill">Diplomado de gestión del talento humano</span>
-          <span class="sum-pill">Visión integral RRHH Farmatodo</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- TRACKS DETAIL -->
-  <div class="section-label"><h2>Rutas de formación — detalle</h2></div>
-  <div class="tracks-grid">
-
-    <!-- IA -->
-    <div class="track-card t-blue">
-      <div class="track-head">
-        <div class="track-icon">🤖</div>
-        <div class="track-head-text">
-          <h3 class="e">Inteligencia Artificial</h3>
-          <p class="e">Progresión funcional → aplicado → demostración</p>
-        </div>
-      </div>
-      <div class="track-modules">
-        <div class="module-row">
-          <div class="module-num">1</div>
-          <div class="module-body">
-            <div class="module-name e">Herramientas IA aplicadas a RRHH</div>
-            <div class="module-desc e">Claude, ChatGPT y otras herramientas IA aplicadas al trabajo diario: redacción, análisis de datos, creación de imágenes y diseños, generación de videos, automatización de tareas repetitivas. Nivel 0 → funcional.</div>
-            <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">Taller · 18 hr virtual</span><span class="chip chip-mes e">Agosto</span></div>
-            <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Jhon Puentes</span></div>
-          </div>
-        </div>
-        <div class="module-row">
-          <div class="module-num">2</div>
-          <div class="module-body">
-            <div class="module-name e">Prompting</div>
-            <div class="module-desc e">Técnicas de prompting para maximizar el uso de herramientas IA en el trabajo diario de RRHH. Casos prácticos y aplicaciones reales.</div>
-            <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">Taller · 4 hr</span><span class="chip chip-mes e">Agosto</span></div>
-            <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Ramón Santander</span></div>
-          </div>
-        </div>
-        <div class="module-row">
-          <div class="module-num">3</div>
-          <div class="module-body">
-            <div class="module-name e">Optimizando la gerencia con IA</div>
-            <div class="module-desc e">Flujos con N8N, prompt engineering avanzado, agentes de reclutamiento y reportes. Casos reales del área.</div>
-            <div class="module-meta"><span class="chip chip-aud e">Directores · Gerentes</span><span class="chip chip-fmt e">25 hr</span><span class="chip chip-mes e">Noviembre</span></div>
-            <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">UNIMET</span></div>
-          </div>
-        </div>
-        <div class="module-row">
-          <div class="module-num">4</div>
-          <div class="module-body">
-            <div class="module-name e">Hackathon IA de cierre</div>
-            <div class="module-desc e">Equipos Venezuela–Colombia presentan soluciones IA reales. Intercambio de mejores prácticas. Cierre del año.</div>
-            <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">Hackathon · 1 día</span><span class="chip chip-mes e">Diciembre</span></div>
-            <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Jhon Puentes</span></div>
-          </div>
-        </div>
+  <!-- INITIATIVES BANNER -->
+  <div class="initiatives-banner">
+    <div class="init-icon">⭐</div>
+    <div class="init-body">
+      <h4>Iniciativas adicionales</h4>
+      <div class="init-pills">
+        <span class="init-pill">🤖 Hackathon de casos de RRHH — Diciembre</span>
+        <span class="init-pill">🏛️ Visión integral RRHH Farmatodo</span>
       </div>
     </div>
-
-    <!-- COMUNICACIÓN -->
-    <div class="track-card t-purple">
-      <div class="track-head">
-        <div class="track-icon">💬</div>
-        <div class="track-head-text">
-          <h3 class="e">Comunicación e Influencia</h3>
-          <p class="e">2 formaciones diferenciadas por nivel y contexto</p>
-        </div>
-      </div>
-      <div class="track-modules">
-        <div class="module-row">
-          <div class="module-num">1</div>
-          <div class="module-body">
-            <div class="module-name e">Gestión del tiempo</div>
-            <div class="module-desc e">Mensajes claros, feedback constructivo, comunicación entre áreas y técnicas de influencia hacia líderes.</div>
-            <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">8 hr</span><span class="chip chip-mes e">Octubre</span></div>
-            <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">CIAP</span></div>
-          </div>
-        </div>
-        <div class="module-row">
-          <div class="module-num">2</div>
-          <div class="module-body">
-            <div class="module-name e">Presentaciones efectivas y herramientas de apoyo</div>
-            <div class="module-desc e">Framework para alta tensión, retroalimentación negativa, gestión de resistencias, presentaciones ante dirección y storytelling con datos.</div>
-            <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">12 hr</span><span class="chip chip-mes e">Octubre</span></div>
-            <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">CIAP</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- DATOS -->
-    <div class="track-card t-green">
-      <div class="track-head">
-        <div class="track-icon">📊</div>
-        <div class="track-head-text">
-          <h3 class="e">Datos y Analítica</h3>
-          <p class="e">Excel → Databricks → People Analytics estratégico</p>
-        </div>
-      </div>
-      <div class="track-modules">
-        <div class="module-row">
-          <div class="module-num">1</div>
-          <div class="module-body">
-            <div class="module-name e">Databricks aplicada para RRHH</div>
-            <div class="module-desc e">Tablas dinámicas, macros básicas, dashboards de talento en Databricks. Visualización de KPIs de ausentismo, rotación y desempeño.</div>
-            <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">Por definir</span><span class="chip chip-mes e">Septiembre</span></div>
-            <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">David López (Interno)</span></div>
-          </div>
-        </div>
-        <div class="module-row">
-          <div class="module-num">2</div>
-          <div class="module-body">
-            <div class="module-name e">IA para el análisis de datos</div>
-            <div class="module-desc e">Análisis de rotación, engagement y headcount. Uso de datos para propuestas estratégicas. Incluye gestión presupuestal del área.</div>
-            <div class="module-meta"><span class="chip chip-aud e">Especialistas · Gerencias · Analistas</span><span class="chip chip-fmt e">Taller · 4 ses. × 2h</span><span class="chip chip-mes e">Octubre</span></div>
-            <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">CIAP</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- LIDERAZGO -->
-    <div class="track-card t-orange">
-      <div class="track-head">
-        <div class="track-icon">👑</div>
-        <div class="track-head-text">
-          <h3 class="e">Liderazgo y Cultura</h3>
-          <p class="e">Habilidades blandas + transformación organizacional</p>
-        </div>
-      </div>
-      <div class="track-modules">
-        <div class="module-row">
-          <div class="module-num">1</div>
-          <div class="module-body">
-            <div class="module-name e">Motivación y liderazgo personal</div>
-            <div class="module-desc e">Autogestión emocional, estilos de liderazgo, desarrollo de colaboradores y acompañamiento a equipos.</div>
-            <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">4 hr</span><span class="chip chip-mes e">Septiembre</span></div>
-            <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">CIAP</span></div>
-          </div>
-        </div>
-        <div class="module-row">
-          <div class="module-num">2</div>
-          <div class="module-body">
-            <div class="module-name e">Reskilling, upskilling y desarrollo del talento para el futuro del trabajo</div>
-            <div class="module-desc e">Estrategias para identificar brechas de competencias, diseñar planes de desarrollo individual y gestionar la evolución del talento.</div>
-            <div class="module-meta"><span class="chip chip-aud e">Gerencias · Directores · Especialistas</span><span class="chip chip-fmt e">Programa · 3 ses. × 2h</span><span class="chip chip-mes e">Noviembre</span></div>
-            <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false"></span></div>
-          </div>
-        </div>
-        <div class="module-row">
-          <div class="module-num">3</div>
-          <div class="module-body">
-            <div class="module-name e">Oratoria de alto impacto y presentaciones efectivas</div>
-            <div class="module-desc e">Técnicas de comunicación oral, manejo del escenario y construcción de presentaciones con impacto ejecutivo.</div>
-            <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">4 hr</span><span class="chip chip-mes e">Agosto</span></div>
-            <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">AVGH – 10 y 15 de agosto</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RRHH ESTRATÉGICO -->
-    <div class="track-card t-navy">
-      <div class="track-head">
-        <div class="track-icon">🏛️</div>
-        <div class="track-head-text">
-          <h3 class="e">RRHH Estratégico y Reclutamiento Moderno</h3>
-          <p class="e">Posicionamiento del área como socio de negocio</p>
-        </div>
-      </div>
-      <div class="track-modules">
-        <div class="module-row">
-          <div class="module-num">1</div>
-          <div class="module-body">
-            <div class="module-name e">Diplomado de gestión del talento humano</div>
-            <div class="module-desc e">Atracción de talento, experiencia del candidato, screening con IA, entrevistas por competencias y marca empleadora digital.</div>
-            <div class="module-meta"><span class="chip chip-aud e">Especialistas · Analistas</span><span class="chip chip-fmt e">A demanda</span><span class="chip chip-mes e">Diciembre</span></div>
-            <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">CIAP – hacer grupo incompany para 25 personas</span></div>
-          </div>
-        </div>
-        <div class="module-row">
-          <div class="module-num">2</div>
-          <div class="module-body">
-            <div class="module-name e">Visión integral RRHH Farmatodo</div>
-            <div class="module-desc e">Todas las áreas de RRHH Farmatodo. Compensación, Desarrollo, Capacitación, RRHH Operaciones y Oficina, Laboral y SHA, Reclutamiento y adquisición de talento.</div>
-            <div class="module-meta"><span class="chip chip-aud e">Gerencias · Directores · Especialistas</span><span class="chip chip-fmt e">Programa · 1 día + 2 ses.</span><span class="chip chip-mes e">Noviembre</span></div>
-            <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">INCAE / Tec de Monterrey</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <!-- TIMELINE -->
@@ -465,51 +244,173 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
           <div class="tl-dot" style="background:var(--navy);"></div>
           <div class="tl-month-label">Agosto</div>
           <div class="tl-card">
-            <div class="tl-focus" style="color:var(--navy);">IA + Prompting + Oratoria</div>
-            <div class="tl-pill tl-ia">Herramientas IA aplicadas a RRHH</div>
-            <div class="tl-pill tl-ia">Prompting — Ramón Santander</div>
-            <div class="tl-pill tl-lid">Oratoria de alto impacto</div>
+            <div class="tl-focus" style="color:var(--navy);">IA + Liderazgo</div>
+            <div class="tl-pill tl-ia">Herramientas IA a RRHH</div>
+            <div class="tl-pill tl-ia">Prompting</div>
+            <div class="tl-pill tl-lid">Reskilling y desarrollo</div>
           </div>
         </div>
         <div class="tl-month">
           <div class="tl-dot" style="background:var(--blue);"></div>
           <div class="tl-month-label">Septiembre</div>
           <div class="tl-card">
-            <div class="tl-focus" style="color:var(--blue);">Liderazgo + Datos</div>
-            <div class="tl-pill tl-lid">Motivación y liderazgo personal</div>
-            <div class="tl-pill tl-dat">Databricks para RRHH</div>
+            <div class="tl-focus" style="color:var(--blue);">Estratégico + Datos</div>
+            <div class="tl-pill tl-est">Diplomado gestión talento</div>
+            <div class="tl-pill tl-ini">Visión integral RRHH ⭐</div>
+            <div class="tl-pill tl-dat">IA para análisis de datos</div>
           </div>
         </div>
         <div class="tl-month">
           <div class="tl-dot" style="background:var(--purple);"></div>
           <div class="tl-month-label">Octubre</div>
           <div class="tl-card">
-            <div class="tl-focus" style="color:var(--purple);">Comunicación + Analytics</div>
+            <div class="tl-focus" style="color:var(--purple);">Comunicación + Datos + Liderazgo</div>
             <div class="tl-pill tl-com">Gestión del tiempo</div>
-            <div class="tl-pill tl-com">Presentaciones efectivas</div>
-            <div class="tl-pill tl-dat">IA para análisis de datos</div>
+            <div class="tl-pill tl-dat">Databricks para RRHH</div>
+            <div class="tl-pill tl-lid">Motivación y liderazgo</div>
           </div>
         </div>
         <div class="tl-month">
           <div class="tl-dot" style="background:var(--green);"></div>
           <div class="tl-month-label">Noviembre</div>
           <div class="tl-card">
-            <div class="tl-focus" style="color:var(--green);">Estrategia + IA Gerencial</div>
-            <div class="tl-pill tl-ia">Optimizando la gerencia con IA</div>
-            <div class="tl-pill tl-lid">Reskilling y desarrollo del talento</div>
-            <div class="tl-pill tl-est">Visión integral RRHH Farmatodo</div>
+            <div class="tl-focus" style="color:var(--green);">Comunicación + IA Gerencial</div>
+            <div class="tl-pill tl-com">Oratoria de alto impacto</div>
+            <div class="tl-pill tl-ia">Optimizando gerencia con IA</div>
           </div>
         </div>
         <div class="tl-month">
           <div class="tl-dot" style="background:var(--orange);"></div>
           <div class="tl-month-label">Diciembre</div>
           <div class="tl-card">
-            <div class="tl-focus" style="color:var(--orange);">Cierre e Intercambio</div>
-            <div class="tl-pill tl-ia">Hackathon IA de Cierre</div>
-            <div class="tl-pill tl-est">Diplomado gestión del talento</div>
+            <div class="tl-focus" style="color:var(--orange);">Comunicación + Cierre</div>
+            <div class="tl-pill tl-com">Presentaciones efectivas</div>
+            <div class="tl-pill tl-ini">Hackathon de casos de RRHH ⭐</div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- TRACKS DETAIL -->
+  <div class="section-label"><h2>Rutas de formación — detalle</h2></div>
+  <div class="tracks-grid">
+
+    <div class="track-card t-blue">
+      <div class="track-head"><div class="track-icon">🤖</div><div class="track-head-text"><h3 class="e">Inteligencia Artificial</h3></div></div>
+      <div class="track-modules">
+        <div class="module-row"><div class="module-num">1</div><div class="module-body">
+          <div class="module-name e">Herramientas IA aplicadas a RRHH</div>
+          <div class="module-desc e">Claude, ChatGPT y otras herramientas IA: redacción, análisis de datos, creación de imágenes, generación de videos, automatización de tareas. Nivel 0 → funcional.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">18 hr virtual</span><span class="chip chip-mes e">Agosto</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Jhon Puentes</span></div>
+        </div></div>
+        <div class="module-row"><div class="module-num">2</div><div class="module-body">
+          <div class="module-name e">Prompting</div>
+          <div class="module-desc e">Técnicas de prompting para maximizar el uso de herramientas IA en el trabajo diario de RRHH. Casos prácticos y aplicaciones reales.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">4 hr</span><span class="chip chip-mes e">Agosto</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Ramón Santander</span></div>
+        </div></div>
+        <div class="module-row"><div class="module-num">3</div><div class="module-body">
+          <div class="module-name e">Optimizando la gerencia con IA</div>
+          <div class="module-desc e">Flujos con N8N, prompt engineering avanzado, agentes de reclutamiento y reportes. Casos reales del área.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Directores · Gerentes</span><span class="chip chip-fmt e">25 hr</span><span class="chip chip-mes e">Noviembre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">UNIMET</span></div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="track-card t-purple">
+      <div class="track-head"><div class="track-icon">💬</div><div class="track-head-text"><h3 class="e">Comunicación e Influencia</h3></div></div>
+      <div class="track-modules">
+        <div class="module-row"><div class="module-num">1</div><div class="module-body">
+          <div class="module-name e">Gestión del tiempo</div>
+          <div class="module-desc e">Mensajes claros, feedback constructivo, comunicación entre áreas y técnicas de influencia hacia líderes.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">8 hr</span><span class="chip chip-mes e">Octubre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">CIAP</span></div>
+        </div></div>
+        <div class="module-row"><div class="module-num">2</div><div class="module-body">
+          <div class="module-name e">Presentaciones efectivas y herramientas de apoyo</div>
+          <div class="module-desc e">Retroalimentación negativa, gestión de resistencias, presentaciones ante dirección y storytelling con datos.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">12 hr</span><span class="chip chip-mes e">Diciembre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">CIAP</span></div>
+        </div></div>
+        <div class="module-row"><div class="module-num">3</div><div class="module-body">
+          <div class="module-name e">Oratoria de alto impacto</div>
+          <div class="module-desc e">Técnicas de comunicación oral, manejo del escenario y construcción de presentaciones con impacto ejecutivo.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">4 hr</span><span class="chip chip-mes e">Noviembre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">AVGH</span></div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="track-card t-green">
+      <div class="track-head"><div class="track-icon">📊</div><div class="track-head-text"><h3 class="e">Datos y Analítica</h3></div></div>
+      <div class="track-modules">
+        <div class="module-row"><div class="module-num">1</div><div class="module-body">
+          <div class="module-name e">Databricks aplicada para RRHH</div>
+          <div class="module-desc e">Dashboards de talento en Databricks. Visualización de KPIs de ausentismo, rotación y desempeño.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">Por definir</span><span class="chip chip-mes e">Octubre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">David López (Interno)</span></div>
+        </div></div>
+        <div class="module-row"><div class="module-num">2</div><div class="module-body">
+          <div class="module-name e">IA para el análisis de datos</div>
+          <div class="module-desc e">Análisis de rotación, engagement y headcount. Uso de datos para propuestas estratégicas. Incluye gestión presupuestal del área.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Especialistas · Gerencias · Analistas</span><span class="chip chip-fmt e">Taller · 4 ses. × 2h</span><span class="chip chip-mes e">Septiembre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">CIAP</span></div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="track-card t-orange">
+      <div class="track-head"><div class="track-icon">👑</div><div class="track-head-text"><h3 class="e">Liderazgo y Cultura</h3></div></div>
+      <div class="track-modules">
+        <div class="module-row"><div class="module-num">1</div><div class="module-body">
+          <div class="module-name e">Motivación y liderazgo personal</div>
+          <div class="module-desc e">Autogestión emocional, estilos de liderazgo, desarrollo de colaboradores y acompañamiento a equipos.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">4 hr</span><span class="chip chip-mes e">Octubre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">CIAP</span></div>
+        </div></div>
+        <div class="module-row"><div class="module-num">2</div><div class="module-body">
+          <div class="module-name e">Reskilling, upskilling y desarrollo del talento</div>
+          <div class="module-desc e">Estrategias para identificar brechas de competencias, diseñar planes de desarrollo individual y gestionar la evolución del talento.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Gerencias · Directores · Especialistas</span><span class="chip chip-fmt e">Programa · 3 ses. × 2h</span><span class="chip chip-mes e">Agosto</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false"></span></div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="track-card t-navy">
+      <div class="track-head"><div class="track-icon">🏛️</div><div class="track-head-text"><h3 class="e">RRHH Estratégico</h3></div></div>
+      <div class="track-modules">
+        <div class="module-row"><div class="module-num">1</div><div class="module-body">
+          <div class="module-name e">Diplomado de gestión del talento humano</div>
+          <div class="module-desc e">Atracción de talento, experiencia del candidato, screening con IA, entrevistas por competencias y marca empleadora digital.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Especialistas · Analistas</span><span class="chip chip-fmt e">A demanda</span><span class="chip chip-mes e">Septiembre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">CIAP – grupo incompany 25 personas</span></div>
+        </div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- INITIATIVES DETAIL -->
+  <div class="section-label"><h2>Iniciativas adicionales</h2></div>
+  <div class="initiatives-detail">
+    <div class="track-head"><div class="track-icon">⭐</div><div class="track-head-text"><h3 class="e">Iniciativas adicionales</h3></div></div>
+    <div class="track-modules track-modules-2">
+      <div class="module-row"><div class="module-num" style="background:#EDF2F8;color:var(--navy);">1</div><div class="module-body">
+        <div class="module-name e">Visión integral RRHH Farmatodo</div>
+        <div class="module-desc e">Todas las áreas de RRHH Farmatodo: Compensación, Desarrollo, Capacitación, RRHH Operaciones y Oficina, Laboral y SHA, Reclutamiento y adquisición de talento.</div>
+        <div class="module-meta"><span class="chip chip-aud e">Gerencias · Directores · Especialistas</span><span class="chip chip-fmt e">1 día + 2 ses.</span><span class="chip chip-mes e">Septiembre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+        <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">INCAE / Tec de Monterrey</span></div>
+      </div></div>
+      <div class="module-row"><div class="module-num" style="background:#EDF2F8;color:var(--navy);">2</div><div class="module-body">
+        <div class="module-name e">Hackathon de casos de RRHH</div>
+        <div class="module-desc e">Equipos Venezuela–Colombia presentan soluciones IA reales. Intercambio de mejores prácticas y cierre del año.</div>
+        <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">Hackathon · 1 día</span><span class="chip chip-mes e">Diciembre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+        <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Jhon Puentes</span></div>
+      </div></div>
     </div>
   </div>
 
@@ -518,9 +419,9 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
 <div class="footer">
   <p>Farmatodo · VP Recursos Humanos · Ruta de Formación 2026</p>
   <div class="footer-chips">
-    <span class="f-chip">15 formaciones</span>
+    <span class="f-chip">13 formaciones</span>
     <span class="f-chip">5 rutas temáticas</span>
-    <span class="f-chip">5 meses</span>
+    <span class="f-chip">2 iniciativas adicionales</span>
   </div>
 </div>
 
