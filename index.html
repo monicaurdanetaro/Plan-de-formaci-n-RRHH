@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Formación RRHH 2026 — Farmatodo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #042C53;
+    --blue: #185FA5;
+    --mid: #378ADD;
+    --light: #B5D4F4;
+    --pale: #E6F1FB;
+    --accent: #0C447C;
+    --purple: #7B3DB5;
+    --purple-pale: #F3E8FD;
+    --green: #2E7D32;
+    --green-pale: #E8F5E9;
+    --orange: #C25C1A;
+    --orange-pale: #FFF3E0;
+    --gray-100: #F1F3F5;
+    --gray-200: #E9ECEF;
+    --gray-600: #6C757D;
+    --gray-800: #343A40;
+    --text: #1A2433;
+    --border: rgba(4,44,83,0.1);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: #EEF3F9; color: var(--text); min-height: 100vh; }
+
+  /* EDIT MODE TOAST */
+  #edit-toast {
+    position: fixed; bottom: 24px; right: 24px; z-index: 999;
+    background: var(--navy); color: white;
+    font-size: 12px; padding: 10px 18px; border-radius: 30px;
+    display: flex; align-items: center; gap: 8px;
+    box-shadow: 0 4px 20px rgba(4,44,83,0.25);
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+  #edit-toast.show { opacity: 1; transform: translateY(0); }
+  #edit-toast .dot { width: 7px; height: 7px; border-radius: 50%; background: #4CAF50; flex-shrink: 0; }
+
+  /* EDITABLE ELEMENTS */
+  [contenteditable="true"] {
+    outline: none;
+    border-radius: 4px;
+    transition: background 0.15s;
+    cursor: text;
+  }
+  [contenteditable="true"]:hover {
+    background: rgba(55,138,221,0.08) !important;
+  }
+  [contenteditable="true"]:focus {
+    background: rgba(55,138,221,0.13) !important;
+    box-shadow: 0 0 0 2px rgba(55,138,221,0.35);
+  }
+  .provider-field {
+    display: flex; align-items: center; gap: 6px;
+    margin-top: 7px; padding: 5px 9px;
+    border-radius: 7px;
+    border: 1.5px dashed rgba(55,138,221,0.35);
+    background: rgba(230,241,251,0.4);
+    min-height: 28px;
+  }
+  .provider-field .prov-label {
+    font-size: 10px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.07em; color: var(--blue); white-space: nowrap; flex-shrink: 0;
+  }
+  .provider-field .prov-value {
+    font-size: 11.5px; color: var(--gray-600); flex: 1;
+  }
+  .provider-field .prov-value:empty::before {
+    content: 'Por definir — haz clic para editar';
+    color: #AABBD0; font-style: italic;
+  }
+  .provider-field:focus-within {
+    border-color: var(--mid);
+    background: rgba(230,241,251,0.7);
+  }
+
+  /* EDIT TOOLBAR */
+  .edit-toolbar {
+    position: sticky; top: 0; z-index: 100;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 2rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    flex-wrap: wrap;
+  }
+  .toolbar-left { display: flex; align-items: center; gap: 10px; }
+  .toolbar-left span { font-size: 12px; color: var(--gray-600); }
+  .toolbar-badge {
+    font-size: 10.5px; padding: 3px 10px; border-radius: 12px;
+    background: var(--pale); color: var(--accent); font-weight: 500;
+  }
+  .btn-edit {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 500;
+    padding: 7px 16px; border-radius: 8px; cursor: pointer;
+    border: 1.5px solid var(--blue); background: white; color: var(--blue);
+    display: flex; align-items: center; gap: 6px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .btn-edit:hover { background: var(--pale); }
+  .btn-edit.active { background: var(--blue); color: white; border-color: var(--blue); }
+  .btn-save {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 500;
+    padding: 7px 16px; border-radius: 8px; cursor: pointer;
+    border: 1.5px solid var(--green); background: var(--green-pale); color: var(--green);
+    display: flex; align-items: center; gap: 6px;
+    transition: background 0.15s;
+  }
+  .btn-save:hover { background: #C8E6C9; }
+  .btn-group { display: flex; gap: 8px; }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 3rem 4rem 0;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -80px; right: -80px;
+    width: 400px; height: 400px; border-radius: 50%;
+    border: 60px solid rgba(55,138,221,0.07);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -40px; left: 30%;
+    width: 250px; height: 250px; border-radius: 50%;
+    border: 40px solid rgba(55,138,221,0.05);
+  }
+  .hero-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem; position: relative; z-index: 1;
+  }
+  .brand { display: flex; align-items: center; gap: 16px; }
+  .brand-logo {
+    width: 52px; height: 52px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 600; color: white; letter-spacing: -0.5px;
+  }
+  .brand-text h1 { font-family: 'DM Serif Display', serif; font-size: 22px; color: white; line-height: 1.2; }
+  .brand-text p { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 3px; }
+  .hero-badge {
+    background: rgba(55,138,221,0.18); border: 1px solid rgba(55,138,221,0.3);
+    color: var(--light); font-size: 12px; padding: 7px 16px; border-radius: 20px;
+  }
+  .hero-kpis {
+    display: grid; grid-template-columns: repeat(5,1fr);
+    position: relative; z-index: 1;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    margin: 0 -4rem; padding: 0 4rem;
+  }
+  .kpi-item {
+    padding: 1.5rem 1rem 1.5rem 0;
+    border-right: 1px solid rgba(255,255,255,0.07);
+  }
+  .kpi-item:last-child { border-right: none; }
+  .kpi-item:not(:first-child) { padding-left: 1.5rem; }
+  .kpi-num { font-family: 'DM Serif Display', serif; font-size: 40px; color: white; line-height: 1; }
+  .kpi-num span { font-size: 18px; opacity: 0.55; }
+  .kpi-label { font-size: 10.5px; color: rgba(255,255,255,0.4); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* MAIN */
+  .main { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
+
+  .section-label { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; }
+  .section-label::before { content: ''; display: block; width: 4px; height: 20px; background: var(--blue); border-radius: 2px; }
+  .section-label h2 { font-size: 12.5px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); }
+
+  /* TRACKS */
+  .tracks-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.25rem; margin-bottom: 3rem; }
+  .track-full { grid-column: 1 / -1; }
+
+  .track-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
+  .track-head { padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 14px; }
+  .track-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .track-head-text h3 { font-size: 15px; font-weight: 600; line-height: 1.2; }
+  .track-head-text p { font-size: 11.5px; margin-top: 2px; opacity: 0.65; }
+  .track-modules { padding: 0 1.5rem 1.25rem; }
+  .module-row { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 1px solid var(--border); }
+  .module-num { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .module-body { flex: 1; min-width: 0; }
+  .module-name { font-size: 13px; font-weight: 500; line-height: 1.35; color: var(--text); }
+  .module-desc { font-size: 12px; color: var(--gray-600); margin-top: 4px; line-height: 1.55; }
+  .module-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+  .chip { font-size: 10.5px; padding: 3px 9px; border-radius: 20px; font-weight: 400; border: 1px solid transparent; }
+  .chip-aud { background: var(--gray-100); color: var(--gray-800); border-color: var(--gray-200); }
+  .chip-fmt { background: white; color: var(--gray-600); border-color: var(--gray-200); }
+
+  /* TRACK COLORS */
+  .t-blue .track-head { background: var(--pale); }
+  .t-blue .track-head-text h3 { color: var(--navy); }
+  .t-blue .track-head-text p { color: var(--blue); }
+  .t-blue .track-icon { background: var(--blue); color: white; }
+  .t-blue .module-num { background: var(--pale); color: var(--accent); }
+  .t-blue .provider-field { border-color: rgba(24,95,165,0.3); background: rgba(230,241,251,0.4); }
+
+  .t-purple .track-head { background: var(--purple-pale); }
+  .t-purple .track-head-text h3 { color: #4A1A7A; }
+  .t-purple .track-head-text p { color: var(--purple); }
+  .t-purple .track-icon { background: var(--purple); color: white; }
+  .t-purple .module-num { background: var(--purple-pale); color: var(--purple); }
+  .t-purple .provider-field { border-color: rgba(123,61,181,0.3); background: rgba(243,232,253,0.4); }
+  .t-purple .prov-label { color: var(--purple); }
+
+  .t-green .track-head { background: var(--green-pale); }
+  .t-green .track-head-text h3 { color: #1B5E20; }
+  .t-green .track-head-text p { color: var(--green); }
+  .t-green .track-icon { background: var(--green); color: white; }
+  .t-green .module-num { background: var(--green-pale); color: var(--green); }
+  .t-green .provider-field { border-color: rgba(46,125,50,0.3); background: rgba(232,245,233,0.5); }
+  .t-green .prov-label { color: var(--green); }
+
+  .t-orange .track-head { background: var(--orange-pale); }
+  .t-orange .track-head-text h3 { color: #7C2A00; }
+  .t-orange .track-head-text p { color: var(--orange); }
+  .t-orange .track-icon { background: var(--orange); color: white; }
+  .t-orange .module-num { background: var(--orange-pale); color: var(--orange); }
+  .t-orange .provider-field { border-color: rgba(194,92,26,0.3); background: rgba(255,243,224,0.5); }
+  .t-orange .prov-label { color: var(--orange); }
+
+  .t-navy .track-head { background: #EDF2F8; }
+  .t-navy .track-head-text h3 { color: var(--navy); }
+  .t-navy .track-head-text p { color: var(--blue); }
+  .t-navy .track-icon { background: var(--navy); color: white; }
+  .t-navy .module-num { background: var(--pale); color: var(--navy); }
+  .t-navy .provider-field { border-color: rgba(4,44,83,0.2); background: rgba(230,241,251,0.4); }
+  .t-navy .track-modules { display: grid; grid-template-columns: repeat(3,1fr); gap: 0 1.5rem; }
+
+  /* TIMELINE */
+  .timeline { margin-bottom: 3rem; }
+  .months { display: grid; grid-template-columns: repeat(6,1fr); border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
+  .month-col { background: white; border-right: 1px solid var(--border); }
+  .month-col:last-child { border-right: none; }
+  .month-stripe { height: 3px; }
+  .month-head { padding: 14px 12px 12px; text-align: center; border-bottom: 1px solid var(--border); }
+  .month-name { font-size: 12px; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: 0.06em; }
+  .month-focus { font-size: 10px; color: var(--gray-600); margin-top: 4px; line-height: 1.4; }
+  .month-body { padding: 10px 8px; display: flex; flex-direction: column; gap: 5px; }
+  .m-pill { font-size: 10px; padding: 5px 8px; border-radius: 8px; line-height: 1.3; }
+  .m-all { background: var(--pale); color: var(--accent); }
+  .m-esp { background: #EDE7F6; color: #4527A0; }
+  .m-ger { background: var(--orange-pale); color: #7C2A00; }
+  .m-asist { background: var(--green-pale); color: #1B5E20; }
+
+  /* AUDIENCE */
+  .audience { margin-bottom: 3rem; }
+  .audience-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; }
+  .aud-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
+  .aud-head { padding: 1rem 1.25rem 0.875rem; }
+  .aud-head h4 { font-size: 13px; font-weight: 600; }
+  .count-badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 9px; border-radius: 10px; margin-top: 4px; }
+  .aud-body { padding: 0 1.25rem 1rem; }
+  .aud-item { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-top: 1px solid var(--border); font-size: 11.5px; color: var(--gray-800); }
+  .aud-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+  .a-navy .aud-head { background: var(--pale); }
+  .a-navy .aud-head h4 { color: var(--navy); }
+  .a-navy .aud-dot { background: var(--navy); }
+  .a-navy .count-badge { background: var(--pale); color: var(--accent); }
+  .a-purple .aud-head { background: var(--purple-pale); }
+  .a-purple .aud-head h4 { color: #4A1A7A; }
+  .a-purple .aud-dot { background: var(--purple); }
+  .a-purple .count-badge { background: var(--purple-pale); color: var(--purple); }
+  .a-green .aud-head { background: var(--green-pale); }
+  .a-green .aud-head h4 { color: #1B5E20; }
+  .a-green .aud-dot { background: var(--green); }
+  .a-green .count-badge { background: var(--green-pale); color: var(--green); }
+  .a-mid .aud-head { background: #EBF5FF; }
+  .a-mid .aud-head h4 { color: #0A3D6B; }
+  .a-mid .aud-dot { background: var(--mid); }
+  .a-mid .count-badge { background: #EBF5FF; color: #0A3D6B; }
+
+  /* FOOTER */
+  .footer {
+    background: var(--navy); padding: 1.5rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer p { font-size: 11px; color: rgba(255,255,255,0.35); }
+  .footer-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .f-chip { font-size: 10.5px; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.55); }
+
+  @media (max-width: 900px) {
+    .hero { padding: 2rem 1.5rem 0; }
+    .hero-kpis { margin: 0 -1.5rem; padding: 0 1.5rem; grid-template-columns: repeat(3,1fr); }
+    .tracks-grid { grid-template-columns: 1fr; }
+    .t-navy .track-modules { grid-template-columns: 1fr; }
+    .months { grid-template-columns: repeat(3,1fr); }
+    .audience-grid { grid-template-columns: repeat(2,1fr); }
+    .footer { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div id="edit-toast"><div class="dot"></div><span id="toast-msg">Modo edición activo — haz clic en cualquier texto</span></div>
+
+<!-- TOOLBAR -->
+<div class="edit-toolbar">
+  <div class="toolbar-left">
+    <span>Plan de Formación RRHH 2026</span>
+    <span class="toolbar-badge" id="edit-status">Solo lectura</span>
+  </div>
+  <div class="btn-group">
+    <button class="btn-edit" id="btn-toggle-edit" onclick="toggleEdit()">✏️ Editar contenido</button>
+    <button class="btn-save" onclick="exportHTML()">⬇️ Descargar HTML</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-top">
+    <div class="brand">
+      <div class="brand-logo">FTD</div>
+      <div class="brand-text">
+        <h1>Plan de Formación RRHH 2026</h1>
+        <p>VP Recursos Humanos · Venezuela &amp; Colombia · Basado en Micropulso 2026 — 79 respuestas</p>
+      </div>
+    </div>
+    <div class="hero-badge">Julio — Diciembre 2026</div>
+  </div>
+  <div class="hero-kpis" style="grid-template-columns: repeat(3,1fr);">
+    <div class="kpi-item"><div class="kpi-num">5</div><div class="kpi-label">Rutas de formación</div></div>
+    <div class="kpi-item"><div class="kpi-num">6</div><div class="kpi-label">Meses de programa</div></div>
+    <div class="kpi-item"><div class="kpi-num">14</div><div class="kpi-label">Módulos</div></div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- TRACKS -->
+  <div class="section-label"><h2>Rutas de formación</h2></div>
+  <div class="tracks-grid">
+
+    <!-- RUTA 1: IA -->
+    <div class="track-card t-blue">
+      <div class="track-head">
+        <div class="track-icon">🤖</div>
+        <div class="track-head-text">
+          <h3 class="e">Inteligencia Artificial</h3>
+          <p class="e">Progresión funcional → aplicado → demostración</p>
+        </div>
+      </div>
+      <div class="track-modules">
+        <div class="module-row">
+          <div class="module-num">1</div>
+          <div class="module-body">
+            <div class="module-name e">IA para RRHH — Nivel básico</div>
+            <div class="module-desc e">Claude, ChatGPT y otras herramientas IA aplicadas al trabajo diario: redacción, análisis de datos, creación de imágenes y diseños, generación de videos, automatización de tareas repetitivas. Nivel 0 → funcional.</div>
+            <div class="module-meta">
+              <span class="chip chip-aud e">Todos</span>
+              <span class="chip chip-fmt e">Taller · 4 ses. × 2h</span>
+            </div>
+            <div class="provider-field">
+              <span class="prov-label">Facilitador</span>
+              <span class="prov-value e" contenteditable="false"></span>
+            </div>
+          </div>
+        </div>
+        <div class="module-row">
+          <div class="module-num">2</div>
+          <div class="module-body">
+            <div class="module-name e">Automatización y Agentes IA para RRHH</div>
+            <div class="module-desc e">Flujos con N8N, prompt engineering avanzado, agentes de reclutamiento y reportes. Casos reales del área.</div>
+            <div class="module-meta">
+              <span class="chip chip-aud e">Especialistas · Analistas · Trainees</span>
+              <span class="chip chip-fmt e">Bootcamp · 6 ses. × 2h</span>
+            </div>
+            <div class="provider-field">
+              <span class="prov-label">Facilitador</span>
+              <span class="prov-value e" contenteditable="false">Servinformación o Equipo de Sady</span>
+            </div>
+          </div>
+        </div>
+        <div class="module-row">
+          <div class="module-num">3</div>
+          <div class="module-body">
+            <div class="module-name e">Hackathon IA de cierre</div>
+            <div class="module-desc e">Equipos Venezuela–Colombia presentan soluciones IA reales. Intercambio de mejores prácticas. Cierre del año.</div>
+            <div class="module-meta">
+              <span class="chip chip-aud e">Todos</span>
+              <span class="chip chip-fmt e">Hackathon · 1 día</span>
+            </div>
+            <div class="provider-field">
+              <span class="prov-label">Facilitador</span>
+              <span class="prov-value e" contenteditable="false"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RUTA 2: COMUNICACIÓN -->
+    <div class="track-card t-purple">
+      <div class="track-head">
+        <div class="track-icon">💬</div>
+        <div class="track-head-text">
+          <h3 class="e">Comunicación e Influencia</h3>
+          <p class="e">2 módulos diferenciados por nivel y contexto</p>
+        </div>
+      </div>
+      <div class="track-modules">
+        <div class="module-row">
+          <div class="module-num">1</div>
+          <div class="module-body">
+            <div class="module-name e">Comunicación asertiva e influencia sin autoridad</div>
+            <div class="module-desc e">Mensajes claros, feedback constructivo, comunicación entre áreas y técnicas de influencia hacia líderes.</div>
+            <div class="module-meta">
+              <span class="chip chip-aud e">Todos</span>
+              <span class="chip chip-fmt e">Workshop · 3 ses. × 2.5h</span>
+            </div>
+            <div class="provider-field">
+              <span class="prov-label">Facilitador</span>
+              <span class="prov-value e" contenteditable="false">UNIMET</span>
+            </div>
+          </div>
+        </div>
+        <div class="module-row">
+          <div class="module-num">2</div>
+          <div class="module-body">
+            <div class="module-name e">Conversaciones difíciles, conflictos y oratoria ejecutiva</div>
+            <div class="module-desc e">Framework para alta tensión, retroalimentación negativa, gestión de resistencias, presentaciones ante dirección y storytelling con datos.</div>
+            <div class="module-meta">
+              <span class="chip chip-aud e">Especialistas · Gerencias · Directores</span>
+              <span class="chip chip-fmt e">Workshop · 3 ses. × 2.5h</span>
+            </div>
+            <div class="provider-field">
+              <span class="prov-label">Facilitador</span>
+              <span class="prov-value e" contenteditable="false">CIAP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RUTA 3: DATOS -->
+    <div class="track-card t-green">
+      <div class="track-head">
+        <div class="track-icon">📊</div>
+        <div class="track-head-text">
+          <h3 class="e">Datos y Analítica</h3>
+          <p class="e">Excel → Databricks → People Analytics estratégico</p>
+        </div>
+      </div>
+      <div class="track-modules">
+        <div class="module-row">
+          <div class="module-num">1</div>
+          <div class="module-body">
+            <div class="module-name e">Excel avanzado + Databricks para RRHH</div>
+            <div class="module-desc e">Tablas dinámicas, macros básicas, dashboards de talento en Databricks. Visualización de KPIs de ausentismo, rotación y desempeño.</div>
+            <div class="module-meta">
+              <span class="chip chip-aud e">Asistentes · Analistas · Trainees</span>
+              <span class="chip chip-fmt e">Bootcamp · 8 ses. × 2h</span>
+            </div>
+            <div class="provider-field">
+              <span class="prov-label">Facilitador</span>
+              <span class="prov-value e" contenteditable="false">David López (Interno)</span>
+            </div>
+          </div>
+        </div>
+        <div class="module-row">
+          <div class="module-num">2</div>
+          <div class="module-body">
+            <div class="module-name e">People Analytics — De los datos a la decisión</div>
+            <div class="module-desc e">Análisis de rotación, engagement y headcount. Uso de datos para propuestas estratégicas. Incluye gestión presupuestal del área.</div>
+            <div class="module-meta">
+              <span class="chip chip-aud e">Especialistas · Gerencias · Analistas</span>
+              <span class="chip chip-fmt e">Taller · 4 ses. × 2h</span>
+            </div>
+            <div class="provider-field">
+              <span class="prov-label">Facilitador</span>
+              <span class="prov-value e" contenteditable="false">IESA / UNIMET (contactar Edyaidee)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RUTA 4: LIDERAZGO -->
+    <div class="track-card t-orange">
+      <div class="track-head">
+        <div class="track-icon">👑</div>
+        <div class="track-head-text">
+          <h3 class="e">Liderazgo y Cultura</h3>
+          <p class="e">Habilidades blandas + transformación organizacional</p>
+        </div>
+      </div>
+      <div class="track-modules">
+        <div class="module-row">
+          <div class="module-num">1</div>
+          <div class="module-body">
+            <div class="module-name e">Inteligencia emocional y liderazgo situacional</div>
+            <div class="module-desc e">Autogestión emocional, estilos de liderazgo, desarrollo de colaboradores y acompañamiento a equipos.</div>
+            <div class="module-meta">
+              <span class="chip chip-aud e">Todos</span>
+              <span class="chip chip-fmt e">Programa · 4 ses. × 2.5h</span>
+            </div>
+            <div class="provider-field">
+              <span class="prov-label">Facilitador</span>
+              <span class="prov-value e" contenteditable="false">Inés / CIAP</span>
+            </div>
+          </div>
+        </div>
+        <div class="module-row">
+          <div class="module-num">2</div>
+          <div class="module-body">
+            <div class="module-name e">Gestión del cambio y cultura organizacional</div>
+            <div class="module-desc e">Change Management, acompañamiento a transformaciones, gestión de resistencias y comunicación del cambio.</div>
+            <div class="module-meta">
+              <span class="chip chip-aud e">Gerencias · Directores · Especialistas</span>
+              <span class="chip chip-fmt e">Programa · 3 ses. × 2h</span>
+            </div>
+            <div class="provider-field">
+              <span class="prov-label">Facilitador</span>
+              <span class="prov-value e" contenteditable="false"></span>
+            </div>
+          </div>
+        </div>
+        <div class="module-row">
+          <div class="module-num">3</div>
+          <div class="module-body">
+            <div class="module-name e">Bienestar, salud mental y gestión del estrés</div>
+            <div class="module-desc e">Herramientas para carga laboral, mindfulness aplicado, diseño de programas de bienestar para la organización.</div>
+            <div class="module-meta">
+              <span class="chip chip-aud e">Todos</span>
+              <span class="chip chip-fmt e">Taller · 2 ses. × 2h</span>
+            </div>
+            <div class="provider-field">
+              <span class="prov-label">Facilitador</span>
+              <span class="prov-value e" contenteditable="false"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RUTA 5: ESTRATÉGICO (full width) -->
+    <div class="track-card t-navy track-full">
+      <div class="track-head">
+        <div class="track-icon">🏛️</div>
+        <div class="track-head-text">
+          <h3 class="e">RRHH Estratégico y Reclutamiento Moderno</h3>
+          <p class="e">Posicionamiento del área como socio de negocio</p>
+        </div>
+      </div>
+      <div class="track-modules">
+        <div class="module-row">
+          <div class="module-num">1</div>
+          <div class="module-body">
+            <div class="module-name e">Reclutamiento moderno con IA y Employer Branding</div>
+            <div class="module-desc e">Atracción de talento, experiencia del candidato, screening con IA, entrevistas por competencias y marca empleadora digital.</div>
+            <div class="module-meta">
+              <span class="chip chip-aud e">Especialistas · Analistas</span>
+              <span class="chip chip-fmt e">Taller · 3 ses. × 2h</span>
+            </div>
+            <div class="provider-field">
+              <span class="prov-label">Facilitador</span>
+              <span class="prov-value e" contenteditable="false">CIAP</span>
+            </div>
+          </div>
+        </div>
+        <div class="module-row">
+          <div class="module-num">2</div>
+          <div class="module-body">
+            <div class="module-name e">RRHH como socio estratégico y tendencias globales</div>
+            <div class="module-desc e">Rol del HRBP, alineación a objetivos corporativos, benchmarking internacional, HR Tech y metodologías ágiles. Puede estructurarse como encuentro de la VP.</div>
+            <div class="module-meta">
+              <span class="chip chip-aud e">Gerencias · Directores · Especialistas</span>
+              <span class="chip chip-fmt e">Programa · 1 día + 2 ses.</span>
+            </div>
+            <div class="provider-field">
+              <span class="prov-label">Facilitador</span>
+              <span class="prov-value e" contenteditable="false">INCAE / Tec de Monterrey</span>
+            </div>
+          </div>
+        </div>
+        <div class="module-row">
+          <div class="module-num">3</div>
+          <div class="module-body">
+            <div class="module-name e">Diplomados y rutas académicas individuales</div>
+            <div class="module-desc e">Presentación de convenios con IESA y otras universidades. Aprobación de rutas de posgrado y certificaciones por persona.</div>
+            <div class="module-meta">
+              <span class="chip chip-aud e">Todos</span>
+              <span class="chip chip-fmt e">Sesión informativa · 1 vez</span>
+            </div>
+            <div class="provider-field">
+              <span class="prov-label">Facilitador</span>
+              <span class="prov-value e" contenteditable="false">IESA y otras universidades</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline">
+    <div class="section-label"><h2>Cronograma · julio — diciembre 2025</h2></div>
+    <div class="months">
+      <div class="month-col">
+        <div class="month-stripe" style="background:var(--navy);"></div>
+        <div class="month-head">
+          <div class="month-name">Julio</div>
+          <div class="month-focus">Fundamentos IA + Comunicación</div>
+        </div>
+        <div class="month-body">
+          <div class="m-pill m-all">IA Nivel Básico</div>
+          <div class="m-pill m-all">Comunicación e Influencia</div>
+        </div>
+      </div>
+      <div class="month-col">
+        <div class="month-stripe" style="background:var(--blue);"></div>
+        <div class="month-head">
+          <div class="month-name">Agosto</div>
+          <div class="month-focus">IA Avanzada + Datos + IE</div>
+        </div>
+        <div class="month-body">
+          <div class="m-pill m-esp">Automatización y Agentes IA</div>
+          <div class="m-pill m-asist">Excel + Databricks</div>
+          <div class="m-pill m-all">IE + Liderazgo Situacional</div>
+        </div>
+      </div>
+      <div class="month-col">
+        <div class="month-stripe" style="background:var(--mid);"></div>
+        <div class="month-head">
+          <div class="month-name">Septiembre</div>
+          <div class="month-focus">Conversaciones + Analytics</div>
+        </div>
+        <div class="month-body">
+          <div class="m-pill m-ger">Conversaciones Difíciles + Oratoria</div>
+          <div class="m-pill m-esp">People Analytics</div>
+        </div>
+      </div>
+      <div class="month-col">
+        <div class="month-stripe" style="background:var(--purple);"></div>
+        <div class="month-head">
+          <div class="month-name">Octubre</div>
+          <div class="month-focus">Liderazgo + Reclutamiento</div>
+        </div>
+        <div class="month-body">
+          <div class="m-pill m-ger">Gestión del Cambio</div>
+          <div class="m-pill m-esp">Reclutamiento IA + EB</div>
+          <div class="m-pill m-all">Bienestar y Salud Mental</div>
+        </div>
+      </div>
+      <div class="month-col">
+        <div class="month-stripe" style="background:var(--green);"></div>
+        <div class="month-head">
+          <div class="month-name">Noviembre</div>
+          <div class="month-focus">Estrategia + Tendencias</div>
+        </div>
+        <div class="month-body">
+          <div class="m-pill m-ger">RRHH Socio Estratégico</div>
+          <div class="m-pill m-all">Diplomados y Rutas Académicas</div>
+        </div>
+      </div>
+      <div class="month-col">
+        <div class="month-stripe" style="background:var(--orange);"></div>
+        <div class="month-head">
+          <div class="month-name">Diciembre</div>
+          <div class="month-focus">Cierre e Intercambio</div>
+        </div>
+        <div class="month-body">
+          <div class="m-pill m-all">Hackathon IA de Cierre</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUDIENCE -->
+  <div class="audience">
+    <div class="section-label"><h2>Rutas por audiencia</h2></div>
+    <div class="audience-grid">
+      <div class="aud-card a-navy">
+        <div class="aud-head">
+          <h4>Gerencias + Directores</h4>
+          <span class="count-badge">9 módulos</span>
+        </div>
+        <div class="aud-body">
+          <div class="aud-item"><span class="aud-dot"></span>IA Nivel Básico</div>
+          <div class="aud-item"><span class="aud-dot"></span>Comunicación e Influencia</div>
+          <div class="aud-item"><span class="aud-dot"></span>Conversaciones Difíciles + Oratoria</div>
+          <div class="aud-item"><span class="aud-dot"></span>IE + Liderazgo Situacional</div>
+          <div class="aud-item"><span class="aud-dot"></span>Gestión del Cambio</div>
+          <div class="aud-item"><span class="aud-dot"></span>People Analytics</div>
+          <div class="aud-item"><span class="aud-dot"></span>RRHH Socio Estratégico</div>
+          <div class="aud-item"><span class="aud-dot"></span>Bienestar · Hackathon</div>
+          <div class="aud-item"><span class="aud-dot"></span>Diplomados</div>
+        </div>
+      </div>
+      <div class="aud-card a-purple">
+        <div class="aud-head">
+          <h4>Especialistas + Coordinadores</h4>
+          <span class="count-badge">10 módulos</span>
+        </div>
+        <div class="aud-body">
+          <div class="aud-item"><span class="aud-dot"></span>IA Nivel Básico</div>
+          <div class="aud-item"><span class="aud-dot"></span>Comunicación e Influencia</div>
+          <div class="aud-item"><span class="aud-dot"></span>Automatización y Agentes IA</div>
+          <div class="aud-item"><span class="aud-dot"></span>Conversaciones Difíciles + Oratoria</div>
+          <div class="aud-item"><span class="aud-dot"></span>IE + Liderazgo Situacional</div>
+          <div class="aud-item"><span class="aud-dot"></span>People Analytics</div>
+          <div class="aud-item"><span class="aud-dot"></span>Reclutamiento IA + EB</div>
+          <div class="aud-item"><span class="aud-dot"></span>Gestión del Cambio</div>
+          <div class="aud-item"><span class="aud-dot"></span>RRHH Socio Estratégico</div>
+          <div class="aud-item"><span class="aud-dot"></span>Bienestar · Hackathon</div>
+        </div>
+      </div>
+      <div class="aud-card a-green">
+        <div class="aud-head">
+          <h4>Asistentes + Analistas</h4>
+          <span class="count-badge">8 módulos</span>
+        </div>
+        <div class="aud-body">
+          <div class="aud-item"><span class="aud-dot"></span>IA Nivel Básico</div>
+          <div class="aud-item"><span class="aud-dot"></span>Comunicación e Influencia</div>
+          <div class="aud-item"><span class="aud-dot"></span>Excel + Databricks</div>
+          <div class="aud-item"><span class="aud-dot"></span>Automatización y Agentes IA</div>
+          <div class="aud-item"><span class="aud-dot"></span>IE + Liderazgo Situacional</div>
+          <div class="aud-item"><span class="aud-dot"></span>People Analytics</div>
+          <div class="aud-item"><span class="aud-dot"></span>Reclutamiento IA + EB</div>
+          <div class="aud-item"><span class="aud-dot"></span>Bienestar · Hackathon</div>
+        </div>
+      </div>
+      <div class="aud-card a-mid">
+        <div class="aud-head">
+          <h4>Trainees</h4>
+          <span class="count-badge">6 módulos</span>
+        </div>
+        <div class="aud-body">
+          <div class="aud-item"><span class="aud-dot"></span>IA Nivel Básico</div>
+          <div class="aud-item"><span class="aud-dot"></span>Comunicación e Influencia</div>
+          <div class="aud-item"><span class="aud-dot"></span>Excel + Databricks</div>
+          <div class="aud-item"><span class="aud-dot"></span>Automatización y Agentes IA</div>
+          <div class="aud-item"><span class="aud-dot"></span>IE + Liderazgo Situacional</div>
+          <div class="aud-item"><span class="aud-dot"></span>Bienestar · Hackathon</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>Farmatodo · VP Recursos Humanos · Plan de Formación 2026</p>
+  <div class="footer-chips">
+    <span class="f-chip">14 módulos consolidados</span>
+    <span class="f-chip">5 rutas temáticas</span>
+    <span class="f-chip">4 audiencias</span>
+  </div>
+</div>
+
+<script>
+  let editMode = false;
+  const toast = document.getElementById('edit-toast');
+  const toastMsg = document.getElementById('toast-msg');
+  const editStatus = document.getElementById('edit-status');
+  const btnToggle = document.getElementById('btn-toggle-edit');
+
+  function showToast(msg, duration) {
+    toastMsg.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(window._toastTimer);
+    if (duration) window._toastTimer = setTimeout(() => toast.classList.remove('show'), duration);
+  }
+
+  function toggleEdit() {
+    editMode = !editMode;
+    const editables = document.querySelectorAll('.e');
+    editables.forEach(el => {
+      el.contentEditable = editMode ? 'true' : 'false';
+    });
+    if (editMode) {
+      btnToggle.textContent = '✅ Finalizar edición';
+      btnToggle.classList.add('active');
+      editStatus.textContent = 'Modo edición';
+      editStatus.style.background = '#FFF3E0';
+      editStatus.style.color = '#7C2A00';
+      showToast('Modo edición activo — haz clic en cualquier texto para editarlo');
+    } else {
+      btnToggle.textContent = '✏️ Editar contenido';
+      btnToggle.classList.remove('active');
+      editStatus.textContent = 'Solo lectura';
+      editStatus.style.background = '';
+      editStatus.style.color = '';
+      showToast('Cambios guardados en esta sesión', 2500);
+    }
+  }
+
+  function exportHTML() {
+    // Remove toolbar and toast from export
+    const toolbar = document.querySelector('.edit-toolbar');
+    const toastEl = document.getElementById('edit-toast');
+    const btnEl = document.getElementById('btn-toggle-edit');
+
+    // Turn off edit mode first
+    if (editMode) toggleEdit();
+
+    // Clone the full document
+    const clone = document.documentElement.cloneNode(true);
+
+    // Remove toolbar & toast from clone
+    clone.querySelector('.edit-toolbar')?.remove();
+    clone.querySelector('#edit-toast')?.remove();
+
+    // Remove contenteditable attributes
+    clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+
+    // Remove edit-related classes and script
+    clone.querySelectorAll('script').forEach(s => s.remove());
+
+    const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    const blob = new Blob([html], { type: 'text/html' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'Plan_Formacion_RRHH_Farmatodo_2025.html';
+    a.click();
+    showToast('Archivo descargado ✓', 2500);
+  }
+</script>
+</body>
+</html>
