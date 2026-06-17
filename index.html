@@ -13,11 +13,13 @@
   --purple: #7B3DB5; --purple-pale: #F3E8FD;
   --green: #2E7D32; --green-pale: #E8F5E9;
   --orange: #C25C1A; --orange-pale: #FFF3E0;
+  --teal: #00695C; --teal-pale: #E0F2F1;
   --gray-100: #F1F3F5; --gray-200: #E9ECEF; --gray-600: #6C757D; --gray-800: #343A40;
   --text: #1A2433; --border: rgba(4,44,83,0.1);
 }
 html { scroll-behavior: smooth; }
 body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--text); min-height: 100vh; }
+
 #edit-toast { position: fixed; bottom: 24px; right: 24px; z-index: 999; background: var(--navy); color: white; font-size: 12px; padding: 10px 18px; border-radius: 30px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 20px rgba(4,44,83,0.25); opacity: 0; transform: translateY(8px); transition: opacity 0.3s, transform 0.3s; pointer-events: none; }
 #edit-toast.show { opacity: 1; transform: translateY(0); }
 #edit-toast .dot { width: 7px; height: 7px; border-radius: 50%; background: #4CAF50; flex-shrink: 0; }
@@ -29,6 +31,7 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
 .provider-field .prov-value { font-size: 11.5px; color: var(--gray-600); flex: 1; }
 .provider-field .prov-value:empty::before { content: "Por definir — haz clic para editar"; color: #AABBD0; font-style: italic; }
 .provider-field:focus-within { border-color: var(--mid); }
+
 .edit-toolbar { position: sticky; top: 0; z-index: 100; background: white; border-bottom: 1px solid var(--border); padding: 10px 2rem; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .toolbar-left { display: flex; align-items: center; gap: 10px; }
 .toolbar-left span { font-size: 12px; color: var(--gray-600); }
@@ -39,6 +42,7 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
 .btn-save { font-family: "DM Sans", sans-serif; font-size: 12px; font-weight: 500; padding: 7px 16px; border-radius: 8px; cursor: pointer; border: 1.5px solid var(--green); background: var(--green-pale); color: var(--green); display: flex; align-items: center; gap: 6px; }
 .btn-save:hover { background: #C8E6C9; }
 .btn-group { display: flex; gap: 8px; }
+
 .hero { background: var(--navy); padding: 3rem 4rem 0; position: relative; overflow: hidden; }
 .hero::before { content: ""; position: absolute; top: -80px; right: -80px; width: 400px; height: 400px; border-radius: 50%; border: 60px solid rgba(55,138,221,0.07); }
 .hero::after { content: ""; position: absolute; bottom: -40px; left: 30%; width: 250px; height: 250px; border-radius: 50%; border: 40px solid rgba(55,138,221,0.05); }
@@ -54,34 +58,36 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
 .kpi-item:not(:first-child) { padding-left: 1.5rem; }
 .kpi-num { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 40px; color: white; line-height: 1; }
 .kpi-label { font-size: 10.5px; color: rgba(255,255,255,0.4); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.08em; }
+
 .main { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
 .section-label { display: flex; align-items: center; gap: 12px; margin-bottom: 1.25rem; }
 .section-label::before { content: ""; display: block; width: 4px; height: 20px; background: var(--blue); border-radius: 2px; }
 .section-label h2 { font-size: 12.5px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); }
+
 /* SUMMARY */
 .summary-section { margin-bottom: 2rem; }
 .summary-table { background: white; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; }
-.sum-header { display: grid; grid-template-columns: 200px 1fr; background: var(--navy); }
+.sum-header { display: grid; grid-template-columns: 220px 1fr; background: var(--navy); }
 .sum-header-cell { padding: 11px 18px; font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: rgba(255,255,255,0.65); }
 .sum-header-cell:first-child { border-right: 1px solid rgba(255,255,255,0.1); }
-.summary-row { display: grid; grid-template-columns: 200px 1fr; align-items: center; border-bottom: 1px solid var(--border); }
+.summary-row { display: grid; grid-template-columns: 220px 1fr; align-items: center; border-bottom: 1px solid var(--border); }
 .summary-row:last-child { border-bottom: none; }
 .sum-track { display: flex; align-items: center; gap: 10px; padding: 13px 18px; border-right: 1px solid var(--border); min-height: 50px; }
-.sum-icon { font-size: 17px; flex-shrink: 0; }
+.sum-icon { flex-shrink: 0; width: 20px; }
 .sum-track-name { font-size: 12px; font-weight: 600; line-height: 1.3; }
 .sum-modules { display: flex; flex-wrap: wrap; gap: 6px; padding: 11px 16px; }
 .sum-pill { font-size: 11px; padding: 4px 10px; border-radius: 20px; border: 1px solid transparent; }
 .s-blue .sum-track { background: var(--pale); } .s-blue .sum-track-name { color: var(--navy); } .s-blue .sum-pill { background: var(--pale); color: var(--accent); border-color: rgba(24,95,165,0.15); }
+.s-teal .sum-track { background: var(--teal-pale); } .s-teal .sum-track-name { color: var(--teal); } .s-teal .sum-pill { background: var(--teal-pale); color: var(--teal); border-color: rgba(0,105,92,0.15); }
 .s-purple .sum-track { background: var(--purple-pale); } .s-purple .sum-track-name { color: #4A1A7A; } .s-purple .sum-pill { background: var(--purple-pale); color: var(--purple); border-color: rgba(123,61,181,0.15); }
-.s-green .sum-track { background: var(--green-pale); } .s-green .sum-track-name { color: #1B5E20; } .s-green .sum-pill { background: var(--green-pale); color: var(--green); border-color: rgba(46,125,50,0.15); }
-.s-orange .sum-track { background: var(--orange-pale); } .s-orange .sum-track-name { color: #7C2A00; } .s-orange .sum-pill { background: var(--orange-pale); color: var(--orange); border-color: rgba(194,92,26,0.15); }
-.s-navy .sum-track { background: #EDF2F8; } .s-navy .sum-track-name { color: var(--navy); } .s-navy .sum-pill { background: var(--pale); color: var(--navy); border-color: rgba(4,44,83,0.15); }
+
 /* INITIATIVES BANNER */
 .initiatives-banner { background: white; border-radius: 16px; border: 1px solid var(--border); padding: 1.1rem 1.5rem; margin-bottom: 2rem; display: flex; align-items: flex-start; gap: 14px; }
-.init-icon { width: 36px; height: 36px; border-radius: 9px; background: #FFFBEB; border: 1px solid rgba(194,92,26,0.2); display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+.init-icon { width: 36px; height: 36px; border-radius: 9px; background: #FFFBEB; border: 1px solid rgba(194,92,26,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .init-body h4 { font-size: 12.5px; font-weight: 600; color: var(--navy); margin-bottom: 7px; }
 .init-pills { display: flex; flex-wrap: wrap; gap: 6px; }
 .init-pill { font-size: 11.5px; padding: 5px 12px; border-radius: 20px; background: #FFFBEB; color: #7C2A00; border: 1px solid rgba(194,92,26,0.2); }
+
 /* TIMELINE */
 .timeline { margin-bottom: 2.5rem; }
 .tl-wrap { position: relative; padding: 2rem 0 1rem; }
@@ -92,56 +98,84 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
 .tl-month-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--navy); margin-bottom: 12px; white-space: nowrap; }
 .tl-card { background: white; border-radius: 12px; border: 1px solid var(--border); padding: 10px 12px; width: calc(100% - 16px); display: flex; flex-direction: column; gap: 5px; }
 .tl-focus { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
-.tl-pill { font-size: 10.5px; padding: 4px 8px; border-radius: 7px; line-height: 1.35; }
-.tl-ia  { background: var(--pale);        color: var(--accent); }
-.tl-com { background: var(--purple-pale); color: var(--purple); }
-.tl-dat { background: var(--green-pale);  color: var(--green);  }
-.tl-lid { background: var(--orange-pale); color: var(--orange); }
-.tl-est { background: #EDF2F8;            color: var(--navy);   }
-.tl-ini { background: #FFFBEB; color: #7C2A00; border: 1px dashed rgba(194,92,26,0.35); }
+.tl-pill { font-size: 10.5px; padding: 4px 8px; border-radius: 7px; line-height: 1.35; display: flex; align-items: center; gap: 4px; }
+.tl-ia   { background: var(--pale); color: var(--accent); }
+.tl-teal { background: var(--teal-pale); color: var(--teal); }
+.tl-soft { background: var(--purple-pale); color: var(--purple); }
+.tl-ini  { background: #FFFBEB; color: #7C2A00; border: 1px dashed rgba(194,92,26,0.35); }
+
 /* TRACKS */
 .tracks-grid { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2.5rem; }
 .track-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
 .track-head { padding: 1.1rem 1.5rem; display: flex; align-items: center; gap: 14px; }
-.track-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.track-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .track-head-text h3 { font-size: 15px; font-weight: 600; line-height: 1.2; }
-.track-modules { padding: 0 1.5rem 1.25rem; display: grid; grid-template-columns: repeat(3,1fr); gap: 0 1.5rem; }
+.track-modules { padding: 0 1.5rem 1.25rem; display: grid; grid-template-columns: repeat(4,1fr); gap: 0 1.25rem; }
+.track-modules-3 { grid-template-columns: repeat(3,1fr) !important; }
 .track-modules-2 { grid-template-columns: repeat(2,1fr) !important; }
-.module-row { display: flex; gap: 12px; align-items: stretch; padding: 12px 0; border-top: 1px solid var(--border); min-width: 0; }
-.module-num { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; flex-shrink: 0; align-self: flex-start; margin-top: 2px; }
+.track-modules-1 { grid-template-columns: 1fr !important; }
+.module-row { display: flex; gap: 10px; align-items: stretch; padding: 12px 0; border-top: 1px solid var(--border); min-width: 0; }
+.module-num { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; flex-shrink: 0; align-self: flex-start; margin-top: 2px; }
 .module-body { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-.module-name { font-size: 13px; font-weight: 500; line-height: 1.35; color: var(--text); }
-.module-desc { font-size: 12px; color: var(--gray-600); margin-top: 4px; line-height: 1.55; flex-grow: 1; }
+.module-name { font-size: 12.5px; font-weight: 600; line-height: 1.35; color: var(--text); }
+.module-desc { font-size: 11.5px; color: var(--gray-600); margin-top: 4px; line-height: 1.55; flex-grow: 1; }
+
+/* Area block inside Visión Integral */
+.area-block { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 0; }
+.area-head { padding: 8px 12px; display: flex; align-items: center; gap: 8px; }
+.area-head-name { font-size: 12px; font-weight: 600; }
+.area-views { display: grid; grid-template-columns: 1fr 1fr; }
+.area-view { padding: 9px 11px; border-top: 1px solid var(--border); }
+.area-view:nth-child(2) { border-left: 1px solid var(--border); }
+.area-view-label { font-size: 9.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
+.area-view-text { font-size: 11px; color: var(--gray-600); line-height: 1.4; }
+.provider-field-area { display: flex; align-items: center; gap: 5px; margin-top: 6px; padding: 4px 8px; border-radius: 6px; border: 1.5px dashed rgba(0,105,92,0.3); background: rgba(224,242,241,0.4); min-height: 24px; }
+.provider-field-area .prov-label { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--teal); white-space: nowrap; flex-shrink: 0; }
+.provider-field-area .prov-value { font-size: 11px; color: var(--gray-600); flex: 1; }
+.provider-field-area .prov-value:empty::before { content: "Por definir"; color: #AABBD0; font-style: italic; }
+
+/* Areas grid */
+.areas-intro { padding: 12px 16px 0; }
+.areas-intro-text { font-size: 12px; color: var(--gray-600); line-height: 1.55; margin-bottom: 4px; }
+.mirada-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; margin-bottom: 12px; }
+.mirada-badge { font-size: 10.5px; padding: 4px 12px; border-radius: 20px; font-weight: 500; display: flex; align-items: center; gap: 5px; }
+.areas-grid { padding: 0 1.5rem 1.25rem; display: grid; grid-template-columns: repeat(7,1fr); gap: 8px; }
+
 .module-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
 .chip { font-size: 10.5px; padding: 3px 9px; border-radius: 20px; font-weight: 400; border: 1px solid transparent; }
 .chip-aud { background: var(--gray-100); color: var(--gray-800); border-color: var(--gray-200); }
 .chip-fmt { background: white; color: var(--gray-600); border-color: var(--gray-200); }
 .chip-mes { background: var(--navy); color: white; font-weight: 500; }
 .chip-cupos { background: white; color: var(--blue); border-color: rgba(24,95,165,0.3); font-weight: 500; min-width: 70px; }
+
 .t-blue .track-head { background: var(--pale); } .t-blue .track-head-text h3 { color: var(--navy); } .t-blue .track-icon { background: var(--blue); color: white; } .t-blue .module-num { background: var(--pale); color: var(--accent); }
+.t-teal .track-head { background: var(--teal-pale); } .t-teal .track-head-text h3 { color: var(--teal); } .t-teal .track-icon { background: var(--teal); color: white; }
 .t-purple .track-head { background: var(--purple-pale); } .t-purple .track-head-text h3 { color: #4A1A7A; } .t-purple .track-icon { background: var(--purple); color: white; } .t-purple .module-num { background: var(--purple-pale); color: var(--purple); } .t-purple .provider-field { border-color: rgba(123,61,181,0.3); } .t-purple .prov-label { color: var(--purple); }
-.t-green .track-head { background: var(--green-pale); } .t-green .track-head-text h3 { color: #1B5E20; } .t-green .track-icon { background: var(--green); color: white; } .t-green .module-num { background: var(--green-pale); color: var(--green); } .t-green .provider-field { border-color: rgba(46,125,50,0.3); } .t-green .prov-label { color: var(--green); }
-.t-orange .track-head { background: var(--orange-pale); } .t-orange .track-head-text h3 { color: #7C2A00; } .t-orange .track-icon { background: var(--orange); color: white; } .t-orange .module-num { background: var(--orange-pale); color: var(--orange); } .t-orange .provider-field { border-color: rgba(194,92,26,0.3); } .t-orange .prov-label { color: var(--orange); }
-.t-navy .track-head { background: #EDF2F8; } .t-navy .track-head-text h3 { color: var(--navy); } .t-navy .track-icon { background: var(--navy); color: white; } .t-navy .module-num { background: var(--pale); color: var(--navy); }
-/* INITIATIVES DETAIL */
+
 .initiatives-detail { background: white; border-radius: 16px; border: 2px dashed var(--border); overflow: hidden; margin-bottom: 2.5rem; }
 .initiatives-detail .track-head { background: #FFFBEB; }
 .initiatives-detail .track-head-text h3 { color: #7C2A00; }
 .initiatives-detail .track-icon { background: #FFFBEB; border: 1px solid rgba(194,92,26,0.25); }
-/* FOOTER */
+
 .footer { background: var(--navy); padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
 .footer p { font-size: 11px; color: rgba(255,255,255,0.35); }
 .footer-chips { display: flex; gap: 8px; flex-wrap: wrap; }
 .f-chip { font-size: 10.5px; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.55); }
+
+@media (max-width: 1100px) {
+  .areas-grid { grid-template-columns: repeat(4,1fr); }
+}
 @media (max-width: 900px) {
   .hero { padding: 2rem 1.5rem 0; }
-  .hero-kpis { margin: 0 -1.5rem; padding: 0 1.5rem; }
-  .track-modules, .track-modules-2 { grid-template-columns: 1fr !important; }
+  .hero-kpis { margin: 0 -1.5rem; padding: 0 1.5rem; grid-template-columns: repeat(2,1fr); }
+  .track-modules, .track-modules-3, .track-modules-2, .track-modules-1 { grid-template-columns: 1fr !important; }
+  .areas-grid { grid-template-columns: repeat(2,1fr) !important; }
   .tl-months { grid-template-columns: repeat(3,1fr); gap: 1rem; }
   .tl-spine { display: none; }
   .footer { padding: 1.5rem; }
+  .area-views { grid-template-columns: 1fr; }
+  .area-view:nth-child(2) { border-left: none; border-top: 1px solid var(--border); }
 }
-@media (max-width: 600px) { .tl-months { grid-template-columns: repeat(2,1fr); } }
 </style>
 </head>
 <body>
@@ -156,6 +190,7 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
     <button class="btn-save" onclick="exportHTML()">⬇️ Descargar HTML</button>
   </div>
 </div>
+
 <div class="hero">
   <div class="hero-top">
     <div class="brand">
@@ -168,12 +203,13 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
     <div class="hero-badge">Agosto — Diciembre 2026</div>
   </div>
   <div class="hero-kpis">
-    <div class="kpi-item"><div class="kpi-num">5</div><div class="kpi-label">Rutas de formación</div></div>
+    <div class="kpi-item"><div class="kpi-num">3</div><div class="kpi-label">Rutas de formación</div></div>
     <div class="kpi-item"><div class="kpi-num">5</div><div class="kpi-label">Meses de programa</div></div>
-    <div class="kpi-item"><div class="kpi-num">11</div><div class="kpi-label">Formaciones</div></div>
-    <div class="kpi-item"><div class="kpi-num">2</div><div class="kpi-label">Iniciativas adicionales</div></div>
+    <div class="kpi-item"><div class="kpi-num">9</div><div class="kpi-label">Formaciones</div></div>
+    <div class="kpi-item"><div class="kpi-num">1</div><div class="kpi-label">Iniciativa adicional</div></div>
   </div>
 </div>
+
 <div class="main">
 
   <!-- SUMMARY -->
@@ -182,42 +218,45 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
     <div class="summary-table">
       <div class="sum-header">
         <div class="sum-header-cell">Ruta de Formación</div>
-        <div class="sum-header-cell">Cursos</div>
+        <div class="sum-header-cell">Cursos / Módulos</div>
       </div>
       <div class="summary-row s-blue">
-        <div class="sum-track"><div class="sum-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="6" width="12" height="10" rx="2" stroke="var(--accent)" stroke-width="1.5"/><path d="M7 6V4.5C7 3.67 7.67 3 8.5 3H11.5C12.33 3 13 3.67 13 4.5V6" stroke="var(--accent)" stroke-width="1.5"/><circle cx="7.5" cy="11" r="1" fill="var(--accent)"/><circle cx="12.5" cy="11" r="1" fill="var(--accent)"/><path d="M8 14h4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/><path d="M2 10h2M16 10h2" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="sum-track-name">Inteligencia Artificial</div></div>
+        <div class="sum-track">
+          <div class="sum-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="4" y="6" width="12" height="10" rx="2" stroke="var(--accent)" stroke-width="1.5"/><path d="M7 6V4.5C7 3.67 7.67 3 8.5 3H11.5C12.33 3 13 3.67 13 4.5V6" stroke="var(--accent)" stroke-width="1.5"/><circle cx="7.5" cy="11" r="1" fill="var(--accent)"/><circle cx="12.5" cy="11" r="1" fill="var(--accent)"/><path d="M8 14h4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/><path d="M2 10h2M16 10h2" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="sum-track-name">Inteligencia Artificial</div>
+        </div>
         <div class="sum-modules">
           <span class="sum-pill">Herramientas IA aplicadas a RRHH</span>
           <span class="sum-pill">Prompting</span>
+          <span class="sum-pill">IA para el análisis de datos</span>
           <span class="sum-pill">Optimizando la gerencia con IA</span>
         </div>
       </div>
+      <div class="summary-row s-teal">
+        <div class="sum-track">
+          <div class="sum-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 17H18" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round"/><path d="M3 17V8M17 17V8" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round"/><path d="M6 17V10M10 17V10M14 17V10" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round"/><path d="M1 8L10 3L19 8" stroke="var(--teal)" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          <div class="sum-track-name">Visión Integral de RRHH</div>
+        </div>
+        <div class="sum-modules">
+          <span class="sum-pill">Reclutamiento y Selección</span>
+          <span class="sum-pill">Compensación y Beneficios</span>
+          <span class="sum-pill">Bienestar</span>
+          <span class="sum-pill">Desarrollo</span>
+          <span class="sum-pill">Capacitación</span>
+          <span class="sum-pill">Comunicaciones Internas</span>
+          <span class="sum-pill">RRHH Negocio</span>
+          <span style="font-size:11px;color:var(--gray-600);padding:4px 0;align-self:center;">— cada área con mirada externa + interna</span>
+        </div>
+      </div>
       <div class="summary-row s-purple">
-        <div class="sum-track"><div class="sum-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 4C3 3.45 3.45 3 4 3H16C16.55 3 17 3.45 17 4V12C17 12.55 16.55 13 16 13H11L7 17V13H4C3.45 13 3 12.55 3 12V4Z" stroke="var(--purple)" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 7H13M7 10H11" stroke="var(--purple)" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="sum-track-name">Comunicación e Influencia</div></div>
+        <div class="sum-track">
+          <div class="sum-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6" r="3" stroke="var(--purple)" stroke-width="1.5"/><path d="M4 17C4 14.24 6.69 12 10 12C13.31 12 16 14.24 16 17" stroke="var(--purple)" stroke-width="1.5" stroke-linecap="round"/><path d="M10 3L11.5 5.5L14 4.5L12.5 7H7.5L6 4.5L8.5 5.5L10 3Z" fill="var(--purple)"/></svg></div>
+          <div class="sum-track-name">Habilidades para el Trabajo</div>
+        </div>
         <div class="sum-modules">
           <span class="sum-pill">Gestión del tiempo</span>
           <span class="sum-pill">Presentaciones efectivas</span>
-          <span class="sum-pill">Oratoria de alto impacto</span>
-        </div>
-      </div>
-      <div class="summary-row s-green">
-        <div class="sum-track"><div class="sum-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 16V3" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round"/><path d="M3 16H17" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round"/><rect x="5" y="10" width="3" height="6" rx="0.5" fill="var(--green)"/><rect x="9.5" y="7" width="3" height="9" rx="0.5" fill="var(--green)"/><rect x="14" y="4" width="3" height="12" rx="0.5" fill="var(--green)"/></svg></div><div class="sum-track-name">Datos y Analítica</div></div>
-        <div class="sum-modules">
-          <span class="sum-pill">Databricks aplicada para RRHH</span>
-          <span class="sum-pill">IA para el análisis de datos</span>
-        </div>
-      </div>
-      <div class="summary-row s-orange">
-        <div class="sum-track"><div class="sum-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="6" r="3" stroke="var(--orange)" stroke-width="1.5"/><path d="M4 17C4 14.24 6.69 12 10 12C13.31 12 16 14.24 16 17" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round"/><path d="M10 3L11.5 5.5L14 4.5L12.5 7H7.5L6 4.5L8.5 5.5L10 3Z" fill="var(--orange)"/></svg></div><div class="sum-track-name">Liderazgo y Cultura</div></div>
-        <div class="sum-modules">
           <span class="sum-pill">Motivación y liderazgo personal</span>
-          <span class="sum-pill">Reskilling y desarrollo del talento</span>
-        </div>
-      </div>
-      <div class="summary-row s-navy">
-        <div class="sum-track"><div class="sum-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 17H18" stroke="var(--navy)" stroke-width="1.5" stroke-linecap="round"/><path d="M3 17V8M17 17V8" stroke="var(--navy)" stroke-width="1.5" stroke-linecap="round"/><path d="M6 17V10M10 17V10M14 17V10" stroke="var(--navy)" stroke-width="1.5" stroke-linecap="round"/><path d="M1 8L10 3L19 8" stroke="var(--navy)" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="sum-track-name">RRHH Estratégico</div></div>
-        <div class="sum-modules">
-          <span class="sum-pill">Diplomado de gestión del talento humano</span>
         </div>
       </div>
     </div>
@@ -225,11 +264,10 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
 
   <!-- INITIATIVES BANNER -->
   <div class="initiatives-banner">
-    <div class="init-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="#C25C1A" stroke="#C25C1A" stroke-width="1" stroke-linejoin="round"/></svg></div>
+    <div class="init-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="#C25C1A" stroke="#C25C1A" stroke-width="1" stroke-linejoin="round"/></svg></div>
     <div class="init-body">
-      <h4>Iniciativas adicionales</h4>
+      <h4>Iniciativa adicional</h4>
       <div class="init-pills">
-        <span class="init-pill">🏛️ Visión integral RRHH Farmatodo</span>
         <span class="init-pill">🤖 Hackathon de casos de RRHH — Diciembre</span>
       </div>
     </div>
@@ -238,57 +276,84 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
   <!-- TIMELINE -->
   <div class="timeline">
     <div class="section-label"><h2>Cronograma · agosto — diciembre 2026</h2></div>
+
+    <!-- Nota de formato -->
+    <div style="background:white;border-radius:12px;border:1px solid var(--border);padding:10px 16px;margin-bottom:1.25rem;display:flex;align-items:center;gap:10px;">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--blue)" stroke-width="1.5"/><path d="M8 5v3l2 2" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <p style="font-size:11.5px;color:var(--gray-600);line-height:1.5;">Cada sesión tiene una duración de <strong style="color:var(--navy);">1 hora</strong>. El programa contempla <strong style="color:var(--navy);">una sesión por semana</strong> a lo largo de los 5 meses, distribuyendo las áreas de RRHH progresivamente junto a las formaciones de IA y habilidades.</p>
+    </div>
+
     <div class="tl-wrap">
       <div class="tl-spine"></div>
       <div class="tl-months">
+
+        <!-- AGOSTO -->
         <div class="tl-month">
           <div class="tl-dot" style="background:var(--navy);"></div>
           <div class="tl-month-label">Agosto</div>
           <div class="tl-card">
-            <div class="tl-focus" style="color:var(--navy);">IA + Liderazgo</div>
-            <div class="tl-pill tl-ia">Herramientas IA a RRHH</div>
-            <div class="tl-pill tl-ia">Prompting</div>
-            <div class="tl-pill tl-lid">Reskilling y desarrollo</div>
+            <div class="tl-focus" style="color:var(--navy);">IA · Fundamentos</div>
+            <div class="tl-pill tl-ia">S1 · Herramientas IA a RRHH</div>
+            <div class="tl-pill tl-ia">S2 · Prompting</div>
+            <div class="tl-pill tl-soft">S3 · Gestión del tiempo</div>
           </div>
         </div>
+
+        <!-- SEPTIEMBRE -->
         <div class="tl-month">
-          <div class="tl-dot" style="background:var(--blue);"></div>
+          <div class="tl-dot" style="background:var(--teal);"></div>
           <div class="tl-month-label">Septiembre</div>
           <div class="tl-card">
-            <div class="tl-focus" style="color:var(--blue);">Estratégico + Datos</div>
-            <div class="tl-pill tl-est">Diplomado gestión talento</div>
-            <div class="tl-pill tl-ini" style="display:flex;align-items:center;gap:4px;line-height:1.35;">Visión integral RRHH <svg width="9" height="9" style="flex-shrink:0;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="#C25C1A" stroke="#C25C1A" stroke-width="1" stroke-linejoin="round"/></svg></div>
-            <div class="tl-pill tl-dat">IA para análisis de datos</div>
+            <div class="tl-focus" style="color:var(--teal);">RRHH · Reclutamiento y Compensación</div>
+            <div class="tl-pill tl-teal">S1 · Reclutamiento — mirada ext.</div>
+            <div class="tl-pill tl-teal">S2 · Reclutamiento — mirada int.</div>
+            <div class="tl-pill tl-teal">S3 · Compensación — mirada ext.</div>
+            <div class="tl-pill tl-teal">S4 · Compensación — mirada int.</div>
           </div>
         </div>
+
+        <!-- OCTUBRE -->
         <div class="tl-month">
-          <div class="tl-dot" style="background:var(--purple);"></div>
+          <div class="tl-dot" style="background:var(--blue);"></div>
           <div class="tl-month-label">Octubre</div>
           <div class="tl-card">
-            <div class="tl-focus" style="color:var(--purple);">Comunicación + Datos + Liderazgo</div>
-            <div class="tl-pill tl-com">Gestión del tiempo</div>
-            <div class="tl-pill tl-dat">Databricks para RRHH</div>
-            <div class="tl-pill tl-lid">Motivación y liderazgo</div>
+            <div class="tl-focus" style="color:var(--blue);">RRHH · Desarrollo y Capacitación</div>
+            <div class="tl-pill tl-teal">S1 · Desarrollo — mirada ext.</div>
+            <div class="tl-pill tl-teal">S2 · Desarrollo — mirada int.</div>
+            <div class="tl-pill tl-teal">S3 · Capacitación — mirada ext.</div>
+            <div class="tl-pill tl-teal">S4 · Capacitación — mirada int.</div>
+            <div class="tl-pill tl-ia">S5 · IA para análisis de datos</div>
+            <div class="tl-pill tl-soft">S5 · Liderazgo personal</div>
           </div>
         </div>
+
+        <!-- NOVIEMBRE -->
         <div class="tl-month">
-          <div class="tl-dot" style="background:var(--green);"></div>
+          <div class="tl-dot" style="background:var(--purple);"></div>
           <div class="tl-month-label">Noviembre</div>
           <div class="tl-card">
-            <div class="tl-focus" style="color:var(--green);">Comunicación + IA Gerencial</div>
-            <div class="tl-pill tl-com">Oratoria de alto impacto</div>
-            <div class="tl-pill tl-ia">Optimizando gerencia con IA</div>
+            <div class="tl-focus" style="color:var(--purple);">RRHH · Bienestar y Com. Internas</div>
+            <div class="tl-pill tl-teal">S1 · Bienestar — mirada ext.</div>
+            <div class="tl-pill tl-teal">S2 · Bienestar — mirada int.</div>
+            <div class="tl-pill tl-teal">S3 · Com. Internas — mirada ext.</div>
+            <div class="tl-pill tl-teal">S4 · Com. Internas — mirada int.</div>
+            <div class="tl-pill tl-ia">S5 · Optimizando gerencia con IA</div>
           </div>
         </div>
+
+        <!-- DICIEMBRE -->
         <div class="tl-month">
           <div class="tl-dot" style="background:var(--orange);"></div>
           <div class="tl-month-label">Diciembre</div>
           <div class="tl-card">
-            <div class="tl-focus" style="color:var(--orange);">Comunicación + Cierre</div>
-            <div class="tl-pill tl-com">Presentaciones efectivas</div>
-            <div class="tl-pill tl-ini" style="display:flex;align-items:center;gap:4px;line-height:1.35;">Hackathon de casos de RRHH <svg width="9" height="9" style="flex-shrink:0;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="#C25C1A" stroke="#C25C1A" stroke-width="1" stroke-linejoin="round"/></svg></div>
+            <div class="tl-focus" style="color:var(--orange);">RRHH · Negocio + Cierre</div>
+            <div class="tl-pill tl-teal">S1 · RRHH Negocio — mirada ext.</div>
+            <div class="tl-pill tl-teal">S2 · RRHH Negocio — mirada int.</div>
+            <div class="tl-pill tl-soft">S3 · Presentaciones efectivas</div>
+            <div class="tl-pill tl-ini">S4 · Hackathon RRHH <svg width="9" height="9" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="#C25C1A" stroke="#C25C1A" stroke-width="1" stroke-linejoin="round"/></svg></div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -297,121 +362,260 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
   <div class="section-label"><h2>Rutas de formación — detalle</h2></div>
   <div class="tracks-grid">
 
+    <!-- RUTA 1: IA -->
     <div class="track-card t-blue">
-      <div class="track-head"><div class="track-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="6" width="12" height="10" rx="2" stroke="white" stroke-width="1.5"/><path d="M7 6V4.5C7 3.67 7.67 3 8.5 3H11.5C12.33 3 13 3.67 13 4.5V6" stroke="white" stroke-width="1.5"/><circle cx="7.5" cy="11" r="1" fill="white"/><circle cx="12.5" cy="11" r="1" fill="white"/><path d="M8 14h4" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M2 10h2M16 10h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="track-head-text"><h3 class="e">Inteligencia Artificial</h3></div></div>
+      <div class="track-head">
+        <div class="track-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="4" y="6" width="12" height="10" rx="2" stroke="white" stroke-width="1.5"/><path d="M7 6V4.5C7 3.67 7.67 3 8.5 3H11.5C12.33 3 13 3.67 13 4.5V6" stroke="white" stroke-width="1.5"/><circle cx="7.5" cy="11" r="1" fill="white"/><circle cx="12.5" cy="11" r="1" fill="white"/><path d="M8 14h4" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M2 10h2M16 10h2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="track-head-text"><h3 class="e">Inteligencia Artificial</h3></div>
+      </div>
       <div class="track-modules">
-        <div class="module-row"><div class="module-num">1</div><div class="module-body">
+        <div class="module-row"><div class="module-num" style="background:var(--pale);color:var(--accent);">1</div><div class="module-body">
           <div class="module-name e">Herramientas IA aplicadas a RRHH</div>
-          <div class="module-desc e">Aplicar herramientas de Inteligencia Artificial en los diferentes procesos de Recursos Humanos para optimizar tareas, mejorar la toma de decisiones y aumentar la productividad.</div>
-          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">18 hr virtual</span><span class="chip chip-mes e">Agosto</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+          <div class="module-desc e">Aplicar herramientas de IA en los diferentes procesos de RRHH para optimizar tareas, mejorar la toma de decisiones y aumentar la productividad.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">18 hr virtual</span><span class="chip chip-mes e">Agosto</span><span class="chip chip-cupos e">Cupos: </span></div>
           <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Jhon Puentes</span></div>
         </div></div>
-        <div class="module-row"><div class="module-num">2</div><div class="module-body">
+        <div class="module-row"><div class="module-num" style="background:var(--pale);color:var(--accent);">2</div><div class="module-body">
           <div class="module-name e">Prompting</div>
-          <div class="module-desc e">Creación de prompts claros, estructurados y efectivos que permitan interactuar de manera eficiente con herramientas de IA, optimizando la generación de contenidos, la resolución de problemas y la automatización de tareas.</div>
-          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">4 hr</span><span class="chip chip-mes e">Agosto</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+          <div class="module-desc e">Creación de prompts claros, estructurados y efectivos para interactuar eficientemente con herramientas de IA, optimizando la generación de contenidos y la automatización de tareas.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">4 hr</span><span class="chip chip-mes e">Agosto</span><span class="chip chip-cupos e">Cupos: </span></div>
           <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Ramón Santander</span></div>
         </div></div>
-        <div class="module-row"><div class="module-num">3</div><div class="module-body">
+        <div class="module-row"><div class="module-num" style="background:var(--pale);color:var(--accent);">3</div><div class="module-body">
+          <div class="module-name e">IA para el análisis de datos</div>
+          <div class="module-desc e">Utilizar herramientas de IA para analizar datos de manera más eficiente, identificar patrones, generar insights y apoyar la toma de decisiones en RRHH.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">Taller · 4 ses. × 2h</span><span class="chip chip-mes e">Octubre</span><span class="chip chip-cupos e">Cupos: </span></div>
+          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">CIAP</span></div>
+        </div></div>
+        <div class="module-row"><div class="module-num" style="background:var(--pale);color:var(--accent);">4</div><div class="module-body">
           <div class="module-name e">Optimizando la gerencia con IA</div>
-          <div class="module-desc e">Integración de la IA como motor de eficiencia y competitividad. Desarrollo de competencias en liderazgo digital, toma de decisiones basada en datos y automatización de procesos.</div>
-          <div class="module-meta"><span class="chip chip-aud e">Directores · Gerentes</span><span class="chip chip-fmt e">25 hr</span><span class="chip chip-mes e">Noviembre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+          <div class="module-desc e">Integración de la IA como motor de eficiencia. Liderazgo digital, toma de decisiones basada en datos y automatización de procesos gerenciales.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Directores · Gerentes</span><span class="chip chip-fmt e">25 hr</span><span class="chip chip-mes e">Noviembre</span><span class="chip chip-cupos e">Cupos: </span></div>
           <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">UNIMET</span></div>
         </div></div>
       </div>
     </div>
 
+    <!-- RUTA 2: VISIÓN INTEGRAL RRHH -->
+    <div class="track-card t-teal">
+      <div class="track-head">
+        <div class="track-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 17H18" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M3 17V8M17 17V8" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M6 17V10M10 17V10M14 17V10" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M1 8L10 3L19 8" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <div class="track-head-text"><h3 class="e">Visión Integral de RRHH</h3></div>
+      </div>
+
+      <!-- Intro explicativa -->
+      <div class="areas-intro">
+        <p class="areas-intro-text e">Cada área de RRHH se trabaja en <strong>dos sesiones complementarias</strong>: una mirada global del área (sus tendencias, mejores prácticas y rol estratégico en las organizaciones, a cargo de un proveedor externo especializado) y una mirada interna de cómo funciona ese proceso en Farmatodo (liderada por el responsable del área).</p>
+        <div class="mirada-badges">
+          <span class="mirada-badge" style="background:rgba(0,105,92,0.1);color:var(--teal);border:1px solid rgba(0,105,92,0.2);">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--teal)" stroke-width="1.5"/><path d="M6 4v2l1.5 1" stroke="var(--teal)" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Mirada externa — ¿Qué hace esta área? Tendencias y mejores prácticas en el mercado
+          </span>
+          <span class="mirada-badge" style="background:rgba(24,95,165,0.08);color:var(--blue);border:1px solid rgba(24,95,165,0.2);">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2L2 10h8L6 2z" stroke="var(--blue)" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            Mirada interna — ¿Cómo funciona en Farmatodo? Foco, impacto y relación con el negocio
+          </span>
+        </div>
+      </div>
+
+      <!-- Grid de áreas -->
+      <div class="areas-grid">
+
+        <!-- Área 1 -->
+        <div class="area-block">
+          <div class="area-head" style="background:rgba(0,105,92,0.06);">
+            <div class="area-head-name e" style="color:var(--teal);">Reclutamiento y Selección</div>
+          </div>
+          <div class="area-views">
+            <div class="area-view">
+              <div class="area-view-label" style="color:var(--teal);">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--teal)" stroke-width="1.5"/><path d="M6 4v2l1.5 1" stroke="var(--teal)" stroke-width="1.3" stroke-linecap="round"/></svg>
+                Mirada externa
+              </div>
+              <div class="area-view-text e">Tendencias en atracción de talento, employer branding, candidate experience, IA en selección</div>
+              <div class="provider-field-area"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false"></span></div>
+            </div>
+            <div class="area-view">
+              <div class="area-view-label" style="color:var(--blue);">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 2L2 10h8L6 2z" stroke="var(--blue)" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                Mirada interna
+              </div>
+              <div class="area-view-text e">Cómo reclutamos en FTD, qué buscamos, cómo decidimos, con quién nos relacionamos</div>
+              <div class="provider-field-area"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Líder del área FTD</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Área 2 -->
+        <div class="area-block">
+          <div class="area-head" style="background:rgba(0,105,92,0.06);">
+            <div class="area-head-name e" style="color:var(--teal);">Compensación y Beneficios</div>
+          </div>
+          <div class="area-views">
+            <div class="area-view">
+              <div class="area-view-label" style="color:var(--teal);"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--teal)" stroke-width="1.5"/><path d="M6 4v2l1.5 1" stroke="var(--teal)" stroke-width="1.3" stroke-linecap="round"/></svg>Mirada externa</div>
+              <div class="area-view-text e">Equidad salarial, estructuras de compensación, beneficios flexibles, benchmarking de mercado</div>
+              <div class="provider-field-area"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false"></span></div>
+            </div>
+            <div class="area-view">
+              <div class="area-view-label" style="color:var(--blue);"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 2L2 10h8L6 2z" stroke="var(--blue)" stroke-width="1.3" stroke-linejoin="round"/></svg>Mirada interna</div>
+              <div class="area-view-text e">Cómo se define la comp en FTD, cómo se relaciona con finanzas y el negocio, impacto en retención</div>
+              <div class="provider-field-area"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Líder del área FTD</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Área 3 -->
+        <div class="area-block">
+          <div class="area-head" style="background:rgba(0,105,92,0.06);">
+            <div class="area-head-name e" style="color:var(--teal);">Bienestar</div>
+          </div>
+          <div class="area-views">
+            <div class="area-view">
+              <div class="area-view-label" style="color:var(--teal);"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--teal)" stroke-width="1.5"/><path d="M6 4v2l1.5 1" stroke="var(--teal)" stroke-width="1.3" stroke-linecap="round"/></svg>Mirada externa</div>
+              <div class="area-view-text e">Bienestar integral, salud mental en el trabajo, tendencias de wellbeing organizacional</div>
+              <div class="provider-field-area"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false"></span></div>
+            </div>
+            <div class="area-view">
+              <div class="area-view-label" style="color:var(--blue);"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 2L2 10h8L6 2z" stroke="var(--blue)" stroke-width="1.3" stroke-linejoin="round"/></svg>Mirada interna</div>
+              <div class="area-view-text e">Qué hacemos en bienestar en FTD, cómo medimos su impacto, programas actuales</div>
+              <div class="provider-field-area"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Líder del área FTD</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Área 4 -->
+        <div class="area-block">
+          <div class="area-head" style="background:rgba(0,105,92,0.06);">
+            <div class="area-head-name e" style="color:var(--teal);">Desarrollo</div>
+          </div>
+          <div class="area-views">
+            <div class="area-view">
+              <div class="area-view-label" style="color:var(--teal);"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--teal)" stroke-width="1.5"/><path d="M6 4v2l1.5 1" stroke="var(--teal)" stroke-width="1.3" stroke-linecap="round"/></svg>Mirada externa</div>
+              <div class="area-view-text e">Gestión del desempeño, planes de carrera, gestión del talento, sucesión y desarrollo de líderes</div>
+              <div class="provider-field-area"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false"></span></div>
+            </div>
+            <div class="area-view">
+              <div class="area-view-label" style="color:var(--blue);"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 2L2 10h8L6 2z" stroke="var(--blue)" stroke-width="1.3" stroke-linejoin="round"/></svg>Mirada interna</div>
+              <div class="area-view-text e">Cómo gestionamos el desarrollo en FTD, cómo se relaciona con el desempeño y la estrategia</div>
+              <div class="provider-field-area"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Líder del área FTD</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Área 5 -->
+        <div class="area-block">
+          <div class="area-head" style="background:rgba(0,105,92,0.06);">
+            <div class="area-head-name e" style="color:var(--teal);">Capacitación</div>
+          </div>
+          <div class="area-views">
+            <div class="area-view">
+              <div class="area-view-label" style="color:var(--teal);"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--teal)" stroke-width="1.5"/><path d="M6 4v2l1.5 1" stroke="var(--teal)" stroke-width="1.3" stroke-linecap="round"/></svg>Mirada externa</div>
+              <div class="area-view-text e">Learning & Development, upskilling/reskilling, IA en formación, medición del impacto del aprendizaje</div>
+              <div class="provider-field-area"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false"></span></div>
+            </div>
+            <div class="area-view">
+              <div class="area-view-label" style="color:var(--blue);"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 2L2 10h8L6 2z" stroke="var(--blue)" stroke-width="1.3" stroke-linejoin="round"/></svg>Mirada interna</div>
+              <div class="area-view-text e">Cómo diseñamos y gestionamos la formación en FTD, prioridades, alianzas con proveedores</div>
+              <div class="provider-field-area"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Líder del área FTD</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Área 6 -->
+        <div class="area-block">
+          <div class="area-head" style="background:rgba(0,105,92,0.06);">
+            <div class="area-head-name e" style="color:var(--teal);">Comunicaciones Internas</div>
+          </div>
+          <div class="area-views">
+            <div class="area-view">
+              <div class="area-view-label" style="color:var(--teal);"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--teal)" stroke-width="1.5"/><path d="M6 4v2l1.5 1" stroke="var(--teal)" stroke-width="1.3" stroke-linecap="round"/></svg>Mirada externa</div>
+              <div class="area-view-text e">Comunicación interna estratégica, cultura organizacional, employer branding interno, canales y herramientas</div>
+              <div class="provider-field-area"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false"></span></div>
+            </div>
+            <div class="area-view">
+              <div class="area-view-label" style="color:var(--blue);"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 2L2 10h8L6 2z" stroke="var(--blue)" stroke-width="1.3" stroke-linejoin="round"/></svg>Mirada interna</div>
+              <div class="area-view-text e">Cómo comunicamos en FTD, canales, mensajes clave y relación con cultura corporativa</div>
+              <div class="provider-field-area"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Líder del área FTD</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Área 7 -->
+        <div class="area-block">
+          <div class="area-head" style="background:rgba(0,105,92,0.06);">
+            <div class="area-head-name e" style="color:var(--teal);">RRHH Negocio</div>
+          </div>
+          <div class="area-views">
+            <div class="area-view">
+              <div class="area-view-label" style="color:var(--teal);"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--teal)" stroke-width="1.5"/><path d="M6 4v2l1.5 1" stroke="var(--teal)" stroke-width="1.3" stroke-linecap="round"/></svg>Mirada externa</div>
+              <div class="area-view-text e">Rol del HRBP, RRHH como socio estratégico, cómo alinearse al negocio, People Analytics aplicado</div>
+              <div class="provider-field-area"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false"></span></div>
+            </div>
+            <div class="area-view">
+              <div class="area-view-label" style="color:var(--blue);"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 2L2 10h8L6 2z" stroke="var(--blue)" stroke-width="1.3" stroke-linejoin="round"/></svg>Mirada interna</div>
+              <div class="area-view-text e">Cómo opera RRHH Negocio en FTD, su relación con las áreas comerciales y operativas</div>
+              <div class="provider-field-area"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Líder del área FTD</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- fin areas-grid -->
+
+      <!-- Nota general -->
+      <div style="margin: 0 1.5rem 1.25rem; padding: 10px 14px; background: var(--teal-pale); border-radius: 8px; border: 1px solid rgba(0,105,92,0.2);">
+        <p style="font-size:11.5px;color:var(--teal);line-height:1.55;" class="e">📅 <strong>Mes de referencia: Septiembre 2026.</strong> Se propone dedicar una semana a esta ruta, con sesiones de ~2 horas por área (mañana: mirada externa / tarde: mirada interna). El orden y fechas exactas se definen con los líderes.</p>
+      </div>
+
+    </div>
+
+    <!-- RUTA 3: HABILIDADES PARA EL TRABAJO -->
     <div class="track-card t-purple">
-      <div class="track-head"><div class="track-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 4C3 3.45 3.45 3 4 3H16C16.55 3 17 3.45 17 4V12C17 12.55 16.55 13 16 13H11L7 17V13H4C3.45 13 3 12.55 3 12V4Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 7H13M7 10H11" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="track-head-text"><h3 class="e">Comunicación e Influencia</h3></div></div>
-      <div class="track-modules">
-        <div class="module-row"><div class="module-num">1</div><div class="module-body">
+      <div class="track-head">
+        <div class="track-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6" r="3" stroke="white" stroke-width="1.5"/><path d="M4 17C4 14.24 6.69 12 10 12C13.31 12 16 14.24 16 17" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M10 3L11.5 5.5L14 4.5L12.5 7H7.5L6 4.5L8.5 5.5L10 3Z" fill="white"/></svg></div>
+        <div class="track-head-text"><h3 class="e">Habilidades para el Trabajo</h3></div>
+      </div>
+      <div class="track-modules track-modules-3">
+        <div class="module-row"><div class="module-num" style="background:var(--purple-pale);color:var(--purple);">1</div><div class="module-body">
           <div class="module-name e">Gestión del tiempo</div>
-          <div class="module-desc e">Desarrollar herramientas y estrategias para gestionar el tiempo de manera más efectiva, establecer prioridades y organizar las actividades de acuerdo con los objetivos y responsabilidades.</div>
-          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">8 hr</span><span class="chip chip-mes e">Octubre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+          <div class="module-desc e">Desarrollar herramientas y estrategias para gestionar el tiempo de manera efectiva, establecer prioridades y organizar las actividades de acuerdo con los objetivos y responsabilidades.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">8 hr</span><span class="chip chip-mes e">Agosto</span><span class="chip chip-cupos e">Cupos: </span></div>
           <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">CIAP</span></div>
         </div></div>
-        <div class="module-row"><div class="module-num">2</div><div class="module-body">
+        <div class="module-row"><div class="module-num" style="background:var(--purple-pale);color:var(--purple);">2</div><div class="module-body">
           <div class="module-name e">Presentaciones efectivas y herramientas de apoyo</div>
-          <div class="module-desc e">Diseñar y realizar presentaciones efectivas, utilizando herramientas de apoyo para comunicar ideas con claridad, persuasión, captar la atención de la audiencia y generar mayor impacto en exposiciones.</div>
-          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">12 hr</span><span class="chip chip-mes e">Diciembre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+          <div class="module-desc e">Diseñar y realizar presentaciones efectivas usando herramientas de apoyo para comunicar ideas con claridad, persuasión e impacto ante cualquier audiencia.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">12 hr</span><span class="chip chip-mes e">Diciembre</span><span class="chip chip-cupos e">Cupos: </span></div>
           <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">CIAP</span></div>
         </div></div>
-        <div class="module-row"><div class="module-num">3</div><div class="module-body">
-          <div class="module-name e">Oratoria de alto impacto</div>
-          <div class="module-desc e">Técnicas de comunicación y expresión oral para transmitir mensajes con seguridad, claridad e impacto, y conectar con la audiencia, fortalecer presencia al hablar y comunicar ideas de manera efectiva en distintos entornos profesionales.</div>
-          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">4 hr</span><span class="chip chip-mes e">Noviembre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
-          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">AVGH</span></div>
-        </div></div>
-      </div>
-    </div>
-
-    <div class="track-card t-green">
-      <div class="track-head"><div class="track-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 16V3" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M3 16H17" stroke="white" stroke-width="1.5" stroke-linecap="round"/><rect x="5" y="10" width="3" height="6" rx="0.5" fill="white"/><rect x="9.5" y="7" width="3" height="9" rx="0.5" fill="white"/><rect x="14" y="4" width="3" height="12" rx="0.5" fill="white"/></svg></div><div class="track-head-text"><h3 class="e">Datos y Analítica</h3></div></div>
-      <div class="track-modules">
-        <div class="module-row"><div class="module-num">1</div><div class="module-body">
-          <div class="module-name e">Databricks aplicada para RRHH</div>
-          <div class="module-desc e">Dashboards de talento en Databricks. Visualización de KPIs de ausentismo, rotación y desempeño.</div>
-          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">Por definir</span><span class="chip chip-mes e">Octubre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
-          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">David López (Interno)</span></div>
-        </div></div>
-        <div class="module-row"><div class="module-num">2</div><div class="module-body">
-          <div class="module-name e">IA para el análisis de datos</div>
-          <div class="module-desc e">Utilizar herramientas de Inteligencia Artificial para analizar datos de manera más eficiente, identificar patrones, generar insights y apoyar la toma de decisiones</div>
-          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">Taller · 4 ses. × 2h</span><span class="chip chip-mes e">Septiembre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
-          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">CIAP</span></div>
-        </div></div>
-      </div>
-    </div>
-
-    <div class="track-card t-orange">
-      <div class="track-head"><div class="track-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="6" r="3" stroke="white" stroke-width="1.5"/><path d="M4 17C4 14.24 6.69 12 10 12C13.31 12 16 14.24 16 17" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M10 3L11.5 5.5L14 4.5L12.5 7H7.5L6 4.5L8.5 5.5L10 3Z" fill="white"/></svg></div><div class="track-head-text"><h3 class="e">Liderazgo y Cultura</h3></div></div>
-      <div class="track-modules">
-        <div class="module-row"><div class="module-num">1</div><div class="module-body">
+        <div class="module-row"><div class="module-num" style="background:var(--purple-pale);color:var(--purple);">3</div><div class="module-body">
           <div class="module-name e">Motivación y liderazgo personal</div>
-          <div class="module-desc e">Fortalece tu motivación y desarrolla habilidades de liderazgo personal para gestionar tus objetivos, asumir desafíos con una actitud positiva y potenciar tu crecimiento profesional.</div>
-          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">4 hr</span><span class="chip chip-mes e">Octubre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
+          <div class="module-desc e">Fortalecer la motivación y desarrollar habilidades de liderazgo personal para gestionar objetivos, asumir desafíos con actitud positiva y potenciar el crecimiento profesional.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">4 hr</span><span class="chip chip-mes e">Octubre</span><span class="chip chip-cupos e">Cupos: </span></div>
           <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">CIAP</span></div>
-        </div></div>
-        <div class="module-row"><div class="module-num">2</div><div class="module-body">
-          <div class="module-name e">Reskilling, upskilling y desarrollo del talento</div>
-          <div class="module-desc e">Conoce cómo el reskilling y el upskilling impulsan el desarrollo del talento, fortaleciendo competencias y promoviendo el aprendizaje continuo para afrontar los desafíos del entorno laboral.</div>
-          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">Programa · 3 ses. × 2h</span><span class="chip chip-mes e">Agosto</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
-          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false"></span></div>
-        </div></div>
-      </div>
-    </div>
-
-    <div class="track-card t-navy">
-      <div class="track-head"><div class="track-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 17H18" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M3 17V8M17 17V8" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M6 17V10M10 17V10M14 17V10" stroke="white" stroke-width="1.5" stroke-linecap="round"/><path d="M1 8L10 3L19 8" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="track-head-text"><h3 class="e">RRHH Estratégico</h3></div></div>
-      <div class="track-modules">
-        <div class="module-row"><div class="module-num">1</div><div class="module-body">
-          <div class="module-name e">Diplomado de gestión del talento humano</div>
-          <div class="module-desc e">Visión integral de la gestión del talento humano, fortaleciendo conocimientos y herramientas para atraer, desarrollar, motivar y retener colaboradores, contribuyendo al logro de los objetivos organizacionales.</div>
-          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">A demanda</span><span class="chip chip-mes e">Septiembre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
-          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">CIAP – grupo incompany</span></div>
         </div></div>
       </div>
     </div>
 
   </div>
 
-  <!-- INITIATIVES DETAIL -->
-  <div class="section-label"><h2>Iniciativas adicionales</h2></div>
+  <!-- INITIATIVE DETAIL -->
+  <div class="section-label"><h2>Iniciativa adicional</h2></div>
   <div class="initiatives-detail">
-    <div class="track-head"><div class="track-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="#C25C1A" stroke="#C25C1A" stroke-width="1" stroke-linejoin="round"/></svg></div><div class="track-head-text"><h3 class="e">Iniciativas adicionales</h3></div></div>
-    <div class="track-modules track-modules-2">
-      <div class="module-row"><div class="module-num" style="background:#EDF2F8;color:var(--navy);">1</div><div class="module-body">
-        <div class="module-name e">Visión integral RRHH Farmatodo</div>
-        <div class="module-desc e">Todas las áreas de RRHH Farmatodo: Compensación, Desarrollo, Capacitación, RRHH Operaciones y Oficina, Laboral y SHA, Reclutamiento y adquisición de talento.</div>
-        <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">1 día + 2 ses.</span><span class="chip chip-mes e">Septiembre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
-        <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Interno (cada área de RRHH FTD)</span></div>
-      </div></div>
-      <div class="module-row"><div class="module-num" style="background:#EDF2F8;color:var(--navy);">2</div><div class="module-body">
-        <div class="module-name e">Hackathon de casos de RRHH</div>
-        <div class="module-desc e">Participa en un espacio colaborativo donde aplicarás conocimientos y habilidades para analizar y resolver casos reales de Recursos Humanos, proponiendo soluciones innovadoras a desafíos relacionados con la gestión del talento.</div>
-        <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">Hackathon · 1 día</span><span class="chip chip-mes e">Diciembre</span><span class="chip chip-cupos e" contenteditable="false">Cupos: </span></div>
-        <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Jhon Puentes</span></div>
-      </div></div>
+    <div class="track-head">
+      <div class="track-icon" style="background:#FFFBEB;border:1px solid rgba(194,92,26,0.25);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="#C25C1A" stroke="#C25C1A" stroke-width="1" stroke-linejoin="round"/></svg></div>
+      <div class="track-head-text"><h3 class="e" style="color:#7C2A00;">Iniciativa adicional</h3></div>
+    </div>
+    <div class="track-modules track-modules-1" style="padding:0 1.5rem 1.25rem;">
+      <div class="module-row">
+        <div class="module-num" style="background:#EDF2F8;color:var(--navy);">1</div>
+        <div class="module-body">
+          <div class="module-name e">Hackathon de casos de RRHH</div>
+          <div class="module-desc e">Espacio colaborativo donde los equipos de Venezuela y Colombia aplican los conocimientos adquiridos durante el año para analizar y resolver casos reales de Recursos Humanos, proponiendo soluciones innovadoras. Es el cierre del programa y una oportunidad para integrar las tres rutas de formación.</div>
+          <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">Hackathon · 1 día</span><span class="chip chip-mes e">Diciembre</span><span class="chip chip-cupos e">Cupos: </span></div>
+          <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Jhon Puentes</span></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -420,9 +624,9 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
 <div class="footer">
   <p>Farmatodo · VP Recursos Humanos · Ruta de Formación 2026</p>
   <div class="footer-chips">
-    <span class="f-chip">11 formaciones</span>
-    <span class="f-chip">5 rutas temáticas</span>
-    <span class="f-chip">2 iniciativas adicionales</span>
+    <span class="f-chip">3 rutas de formación</span>
+    <span class="f-chip">7 áreas de RRHH</span>
+    <span class="f-chip">1 iniciativa adicional</span>
   </div>
 </div>
 
