@@ -200,12 +200,7 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
     </div>
     <div class="hero-badge">Agosto — Diciembre 2026</div>
   </div>
-  <div class="hero-kpis">
-    <div class="kpi-item"><div class="kpi-num">3</div><div class="kpi-label">Rutas de formación</div></div>
-    <div class="kpi-item"><div class="kpi-num">5</div><div class="kpi-label">Meses de programa</div></div>
-    <div class="kpi-item"><div class="kpi-num">9</div><div class="kpi-label">Formaciones</div></div>
-    <div class="kpi-item"><div class="kpi-num">1</div><div class="kpi-label">Iniciativa adicional</div></div>
-  </div>
+
 </div>
 
 <div class="main">
@@ -543,7 +538,17 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
 
     <div class="tl-wrap">
       <div class="tl-spine"></div>
-      <div class="tl-months">
+      <div class="tl-months" style="grid-template-columns:repeat(6,1fr);">
+
+        <!-- JULIO -->
+        <div class="tl-month">
+          <div class="tl-dot" style="background:#B0B0B0;border-color:white;box-shadow:0 0 0 2px #B0B0B0;"></div>
+          <div class="tl-month-label" style="color:var(--gray-600);">Julio</div>
+          <div class="tl-card">
+            <div class="tl-focus" style="color:var(--gray-600);">Lanzamiento</div>
+            <div class="tl-pill" style="background:#F1F3F5;color:var(--gray-600);border:1px solid var(--gray-200);">🚀 Kick off del programa</div>
+          </div>
+        </div>
 
         <!-- AGOSTO -->
         <div class="tl-month">
