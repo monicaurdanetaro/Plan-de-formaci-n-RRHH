@@ -139,7 +139,7 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
 .areas-intro-text { font-size: 12px; color: var(--gray-600); line-height: 1.55; margin-bottom: 4px; }
 .mirada-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; margin-bottom: 12px; }
 .mirada-badge { font-size: 10.5px; padding: 4px 12px; border-radius: 20px; font-weight: 500; display: flex; align-items: center; gap: 5px; }
-.areas-grid { padding: 0 1.5rem 1.25rem; display: grid; grid-template-columns: repeat(7,1fr); gap: 8px; }
+.areas-grid { padding: 0 1.5rem 1.25rem; display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
 
 .module-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
 .chip { font-size: 10.5px; padding: 3px 9px; border-radius: 20px; font-weight: 400; border: 1px solid transparent; }
@@ -162,14 +162,12 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
 .footer-chips { display: flex; gap: 8px; flex-wrap: wrap; }
 .f-chip { font-size: 10.5px; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.55); }
 
-@media (max-width: 1100px) {
-  .areas-grid { grid-template-columns: repeat(4,1fr); }
-}
+
 @media (max-width: 900px) {
   .hero { padding: 2rem 1.5rem 0; }
   .hero-kpis { margin: 0 -1.5rem; padding: 0 1.5rem; grid-template-columns: repeat(2,1fr); }
   .track-modules, .track-modules-3, .track-modules-2, .track-modules-1 { grid-template-columns: 1fr !important; }
-  .areas-grid { grid-template-columns: repeat(2,1fr) !important; }
+  .areas-grid { grid-template-columns: 1fr !important; }
   .tl-months { grid-template-columns: repeat(3,1fr); gap: 1rem; }
   .tl-spine { display: none; }
   .footer { padding: 1.5rem; }
@@ -273,90 +271,7 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
     </div>
   </div>
 
-  <!-- TIMELINE -->
-  <div class="timeline">
-    <div class="section-label"><h2>Cronograma · agosto — diciembre 2026</h2></div>
 
-    <!-- Nota de formato -->
-    <div style="background:white;border-radius:12px;border:1px solid var(--border);padding:10px 16px;margin-bottom:1.25rem;display:flex;align-items:center;gap:10px;">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--blue)" stroke-width="1.5"/><path d="M8 5v3l2 2" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"/></svg>
-      <p style="font-size:11.5px;color:var(--gray-600);line-height:1.5;">Cada sesión tiene una duración de <strong style="color:var(--navy);">1 hora</strong>. El programa contempla <strong style="color:var(--navy);">una sesión por semana</strong> a lo largo de los 5 meses, distribuyendo las áreas de RRHH progresivamente junto a las formaciones de IA y habilidades.</p>
-    </div>
-
-    <div class="tl-wrap">
-      <div class="tl-spine"></div>
-      <div class="tl-months">
-
-        <!-- AGOSTO -->
-        <div class="tl-month">
-          <div class="tl-dot" style="background:var(--navy);"></div>
-          <div class="tl-month-label">Agosto</div>
-          <div class="tl-card">
-            <div class="tl-focus" style="color:var(--navy);">IA · Fundamentos</div>
-            <div class="tl-pill tl-ia">S1 · Herramientas IA a RRHH</div>
-            <div class="tl-pill tl-ia">S2 · Prompting</div>
-            <div class="tl-pill tl-soft">S3 · Gestión del tiempo</div>
-          </div>
-        </div>
-
-        <!-- SEPTIEMBRE -->
-        <div class="tl-month">
-          <div class="tl-dot" style="background:var(--teal);"></div>
-          <div class="tl-month-label">Septiembre</div>
-          <div class="tl-card">
-            <div class="tl-focus" style="color:var(--teal);">RRHH · Reclutamiento y Compensación</div>
-            <div class="tl-pill tl-teal">S1 · Reclutamiento — mirada ext.</div>
-            <div class="tl-pill tl-teal">S2 · Reclutamiento — mirada int.</div>
-            <div class="tl-pill tl-teal">S3 · Compensación — mirada ext.</div>
-            <div class="tl-pill tl-teal">S4 · Compensación — mirada int.</div>
-          </div>
-        </div>
-
-        <!-- OCTUBRE -->
-        <div class="tl-month">
-          <div class="tl-dot" style="background:var(--blue);"></div>
-          <div class="tl-month-label">Octubre</div>
-          <div class="tl-card">
-            <div class="tl-focus" style="color:var(--blue);">RRHH · Desarrollo y Capacitación</div>
-            <div class="tl-pill tl-teal">S1 · Desarrollo — mirada ext.</div>
-            <div class="tl-pill tl-teal">S2 · Desarrollo — mirada int.</div>
-            <div class="tl-pill tl-teal">S3 · Capacitación — mirada ext.</div>
-            <div class="tl-pill tl-teal">S4 · Capacitación — mirada int.</div>
-            <div class="tl-pill tl-ia">S5 · IA para análisis de datos</div>
-            <div class="tl-pill tl-soft">S5 · Liderazgo personal</div>
-          </div>
-        </div>
-
-        <!-- NOVIEMBRE -->
-        <div class="tl-month">
-          <div class="tl-dot" style="background:var(--purple);"></div>
-          <div class="tl-month-label">Noviembre</div>
-          <div class="tl-card">
-            <div class="tl-focus" style="color:var(--purple);">RRHH · Bienestar y Com. Internas</div>
-            <div class="tl-pill tl-teal">S1 · Bienestar — mirada ext.</div>
-            <div class="tl-pill tl-teal">S2 · Bienestar — mirada int.</div>
-            <div class="tl-pill tl-teal">S3 · Com. Internas — mirada ext.</div>
-            <div class="tl-pill tl-teal">S4 · Com. Internas — mirada int.</div>
-            <div class="tl-pill tl-ia">S5 · Optimizando gerencia con IA</div>
-          </div>
-        </div>
-
-        <!-- DICIEMBRE -->
-        <div class="tl-month">
-          <div class="tl-dot" style="background:var(--orange);"></div>
-          <div class="tl-month-label">Diciembre</div>
-          <div class="tl-card">
-            <div class="tl-focus" style="color:var(--orange);">RRHH · Negocio + Cierre</div>
-            <div class="tl-pill tl-teal">S1 · RRHH Negocio — mirada ext.</div>
-            <div class="tl-pill tl-teal">S2 · RRHH Negocio — mirada int.</div>
-            <div class="tl-pill tl-soft">S3 · Presentaciones efectivas</div>
-            <div class="tl-pill tl-ini">S4 · Hackathon RRHH <svg width="9" height="9" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="#C25C1A" stroke="#C25C1A" stroke-width="1" stroke-linejoin="round"/></svg></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
 
   <!-- TRACKS DETAIL -->
   <div class="section-label"><h2>Rutas de formación — detalle</h2></div>
@@ -563,8 +478,9 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
       </div><!-- fin areas-grid -->
 
       <!-- Nota general -->
-      <div style="margin: 0 1.5rem 1.25rem; padding: 10px 14px; background: var(--teal-pale); border-radius: 8px; border: 1px solid rgba(0,105,92,0.2);">
-        <p style="font-size:11.5px;color:var(--teal);line-height:1.55;" class="e">📅 <strong>Mes de referencia: Septiembre 2026.</strong> Se propone dedicar una semana a esta ruta, con sesiones de ~2 horas por área (mañana: mirada externa / tarde: mirada interna). El orden y fechas exactas se definen con los líderes.</p>
+      <div style="margin: 0 1.5rem 1.25rem; padding: 10px 16px; background: var(--teal-pale); border-radius: 8px; border: 1px solid rgba(0,105,92,0.2); display:flex; align-items:flex-start; gap:10px;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px;"><circle cx="8" cy="8" r="7" stroke="var(--teal)" stroke-width="1.5"/><path d="M8 5v3l2 2" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <p style="font-size:11.5px;color:var(--teal);line-height:1.55;" class="e">Cada sesión tiene una duración de <strong>1 hora</strong>. El programa contempla <strong>una sesión por semana</strong>, distribuyendo las 7 áreas a lo largo de septiembre, octubre, noviembre y diciembre, siempre con su mirada externa e interna.</p>
       </div>
 
     </div>
@@ -615,6 +531,87 @@ body { font-family: "DM Sans", sans-serif; background: #EEF3F9; color: var(--tex
           <div class="module-meta"><span class="chip chip-aud e">Todos</span><span class="chip chip-fmt e">Hackathon · 1 día</span><span class="chip chip-mes e">Diciembre</span><span class="chip chip-cupos e">Cupos: </span></div>
           <div class="provider-field"><span class="prov-label">Facilitador</span><span class="prov-value e" contenteditable="false">Jhon Puentes</span></div>
         </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- TIMELINE -->
+  <!-- TIMELINE -->
+  <div class="timeline">
+    <div class="section-label"><h2>Cronograma · agosto — diciembre 2026</h2></div>
+
+    <div class="tl-wrap">
+      <div class="tl-spine"></div>
+      <div class="tl-months">
+
+        <!-- AGOSTO -->
+        <div class="tl-month">
+          <div class="tl-dot" style="background:var(--navy);"></div>
+          <div class="tl-month-label">Agosto</div>
+          <div class="tl-card">
+            <div class="tl-focus" style="color:var(--navy);">IA · Fundamentos</div>
+            <div class="tl-pill tl-ia">S1 · Herramientas IA a RRHH</div>
+            <div class="tl-pill tl-ia">S2 · Prompting</div>
+            <div class="tl-pill tl-soft">S3 · Gestión del tiempo</div>
+          </div>
+        </div>
+
+        <!-- SEPTIEMBRE -->
+        <div class="tl-month">
+          <div class="tl-dot" style="background:var(--teal);"></div>
+          <div class="tl-month-label">Septiembre</div>
+          <div class="tl-card">
+            <div class="tl-focus" style="color:var(--teal);">RRHH · Reclutamiento y Compensación</div>
+            <div class="tl-pill tl-teal">S1 · Reclutamiento — mirada ext.</div>
+            <div class="tl-pill tl-teal">S2 · Reclutamiento — mirada int.</div>
+            <div class="tl-pill tl-teal">S3 · Compensación — mirada ext.</div>
+            <div class="tl-pill tl-teal">S4 · Compensación — mirada int.</div>
+          </div>
+        </div>
+
+        <!-- OCTUBRE -->
+        <div class="tl-month">
+          <div class="tl-dot" style="background:var(--blue);"></div>
+          <div class="tl-month-label">Octubre</div>
+          <div class="tl-card">
+            <div class="tl-focus" style="color:var(--blue);">RRHH · Desarrollo y Capacitación</div>
+            <div class="tl-pill tl-teal">S1 · Desarrollo — mirada ext.</div>
+            <div class="tl-pill tl-teal">S2 · Desarrollo — mirada int.</div>
+            <div class="tl-pill tl-teal">S3 · Capacitación — mirada ext.</div>
+            <div class="tl-pill tl-teal">S4 · Capacitación — mirada int.</div>
+            <div class="tl-pill tl-ia">S5 · IA para análisis de datos</div>
+            <div class="tl-pill tl-soft">S5 · Liderazgo personal</div>
+          </div>
+        </div>
+
+        <!-- NOVIEMBRE -->
+        <div class="tl-month">
+          <div class="tl-dot" style="background:var(--purple);"></div>
+          <div class="tl-month-label">Noviembre</div>
+          <div class="tl-card">
+            <div class="tl-focus" style="color:var(--purple);">RRHH · Bienestar y Com. Internas</div>
+            <div class="tl-pill tl-teal">S1 · Bienestar — mirada ext.</div>
+            <div class="tl-pill tl-teal">S2 · Bienestar — mirada int.</div>
+            <div class="tl-pill tl-teal">S3 · Com. Internas — mirada ext.</div>
+            <div class="tl-pill tl-teal">S4 · Com. Internas — mirada int.</div>
+            <div class="tl-pill tl-ia">S5 · Optimizando gerencia con IA</div>
+          </div>
+        </div>
+
+        <!-- DICIEMBRE -->
+        <div class="tl-month">
+          <div class="tl-dot" style="background:var(--orange);"></div>
+          <div class="tl-month-label">Diciembre</div>
+          <div class="tl-card">
+            <div class="tl-focus" style="color:var(--orange);">RRHH · Negocio + Cierre</div>
+            <div class="tl-pill tl-teal">S1 · RRHH Negocio — mirada ext.</div>
+            <div class="tl-pill tl-teal">S2 · RRHH Negocio — mirada int.</div>
+            <div class="tl-pill tl-soft">S3 · Presentaciones efectivas</div>
+            <div class="tl-pill tl-ini">S4 · Hackathon RRHH <svg width="9" height="9" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="#C25C1A" stroke="#C25C1A" stroke-width="1" stroke-linejoin="round"/></svg></div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
